@@ -38,18 +38,16 @@ function handleOrientation(event) {
   gamma = event.gamma
   console.log("asda");
   alpha = Math.floor(event.gamma);
-  document.getElementById("alpha").textContent = event.beta
-    ? gamma.toFixed(2)
-    : "N/A";
-  document.getElementById("beta").textContent = event.beta
-    ? event.beta.toFixed(2)
-    : "N/A";
+  // document.getElementById("beta").textContent = event.beta
+  //   ? event.beta.toFixed(2)
+  //   : "N/A";
   document.getElementById("gamma").textContent = event.gamma
     ? event.gamma.toFixed(2)
     : "N/A";
 }
 
 function init() {
+  
   if (
     typeof DeviceOrientationEvent !== "undefined" &&
     typeof DeviceOrientationEvent.requestPermission === "function"
@@ -128,8 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+let a = 0
 
 const update = () => {
+  a++
+  document.getElementById("alpha").textContent = a
+
 console.log(gamma)
 document.getElementById("beta").textContent = gamma
 
