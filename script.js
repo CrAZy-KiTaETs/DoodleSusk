@@ -14,8 +14,8 @@ let doodlerLeftImg;
 // physics
 let velocityX = 0;
 let velocityY = 0;
-let jumpHeight = -8;
-let gravity = 0.3;
+let jumpHeight = -(Math.PI * 2);
+let gravity = 0.2;
 
 // platforms
 let platformArr = [];
@@ -31,9 +31,13 @@ let doodler = {
   height: doodlerHeight,
 };
 
+let prevY
+let gamma
+
 document.addEventListener("DOMContentLoaded", () => {
   // запуск гироскопа
   function handleOrientation(event) {
+    alpha = Math.floor(event.gamma)
     document.getElementById("alpha").textContent = event.alpha
       ? event.alpha.toFixed(2)
       : "N/A";
@@ -120,6 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const update = () => {
+
+
+
+
   if (!gameOver()) {
     requestAnimationFrame(gameOver);
   } else {
@@ -135,6 +143,8 @@ const update = () => {
   } else if (doodler.x + doodlerWidth < 0) {
     doodler.x = boardWidth;
   }
+  console.log(doodler.y)
+  prevY = doodler.y
 
   velocityY += gravity;
   doodler.y += velocityY;
@@ -148,6 +158,7 @@ const update = () => {
       doodlerHeight
     );
   }
+  
 
   // Update platforms
   for (let i = 0; i < platformArr.length; i++) {
@@ -155,7 +166,9 @@ const update = () => {
     if (velocityY < 0 && doodler.y < boardHeight / 2) {
       platform.y -= jumpHeight;
     }
-    if (detectCollision(doodler, platform)) {
+    if (detectCollision(doodler, platform) && prevY < doodler.y) {
+      console.log('asdadad', velocityY, jumpHeight, doodler.y)
+      // for (let i = velocityY; i <= velocityY)
       velocityY = jumpHeight;
     }
     if (platform.img) {
@@ -174,6 +187,8 @@ const update = () => {
     platformArr.shift();
     newPlatforms();
   }
+
+
 };
 
 const moveDoodler = (e) => {
@@ -184,6 +199,9 @@ const moveDoodler = (e) => {
     velocityX = -4;
     doodler.img = doodlerLeftImg;
   }
+  if (gamma >= 5 || gamma <= -5) {
+    velocityX = gamma / 4
+  } 
 };
 
 const stopDoodler = (e) => {
@@ -228,6 +246,12 @@ const newPlatforms = () => {
 };
 
 const detectCollision = (a, b) => {
+  // console.log(`
+  // fist line = ${a.x} < ${b.x + b.width}
+  // sec line = ${a.x + a.width} > ${b.x}
+  // thir line = ${a.y} < ${b.y + b.height}
+  // four line = ${a.y + a.height} > ${b.y}
+  // `);
   return (
     a.x < b.x + b.width &&
     a.x + a.width > b.x &&

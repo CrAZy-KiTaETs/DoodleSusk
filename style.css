@@ -19,7 +19,7 @@ body {
     border: 2px solid black;
     position: relative;
     overflow: hidden;
-    background-image: url(/images/doodlejumpbg.png);
+    background-image: url(./images/doodlejumpbg.png);
 }
 
 .doodler {
@@ -28,7 +28,7 @@ body {
     background-color: green;
     position: absolute;
     bottom: 0;
-    background-image: url(/images/doodler-left.png);
+    background-image: url(./images/doodler-left.png);
     background-size: contain;
     z-index: 1;
 }
