@@ -34,48 +34,52 @@ let doodler = {
 let prevY;
 let gamma;
 
+function handleOrientation(event) {
+  gamma = event.gamma
+  console.log("asda");
+  alpha = Math.floor(event.gamma);
+  // document.getElementById("alpha").textContent = event.alpha
+  //   ? event.alpha.toFixed(2)
+  //   : "N/A";
+  document.getElementById("beta").textContent = event.beta
+    ? event.beta.toFixed(2)
+    : "N/A";
+  document.getElementById("gamma").textContent = event.gamma
+    ? event.gamma.toFixed(2)
+    : "N/A";
+}
+
+function init() {
+  if (
+    typeof DeviceOrientationEvent !== "undefined" &&
+    typeof DeviceOrientationEvent.requestPermission === "function"
+  ) {
+    DeviceOrientationEvent.requestPermission()
+      .then((permissionState) => {
+        if (permissionState === "granted") {
+          window.addEventListener("deviceorientation", handleOrientation);
+        } else {
+          alert("Permission to access device orientation was denied.");
+        }
+      })
+      .catch((error) => {
+        console.error(
+          "Error requesting permission for device orientation:",
+          error
+        );
+        alert("Error requesting permission for device orientation.");
+      });
+  } else if (window.DeviceOrientationEvent) {
+    // For browsers that do not require permission
+    window.addEventListener("deviceorientation", handleOrientation);
+  } else {
+    alert("Device Orientation API not supported.");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // запуск гироскопа
-  function handleOrientation(event) {
-    alpha = Math.floor(event.gamma);
-    // document.getElementById("alpha").textContent = event.alpha
-    //   ? event.alpha.toFixed(2)
-    //   : "N/A";
-    document.getElementById("beta").textContent = event.beta
-      ? event.beta.toFixed(2)
-      : "N/A";
-    document.getElementById("gamma").textContent = event.gamma
-      ? event.gamma.toFixed(2)
-      : "N/A";
-  }
 
-  function init() {
-    if (
-      typeof DeviceOrientationEvent !== "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function"
-    ) {
-      DeviceOrientationEvent.requestPermission()
-        .then((permissionState) => {
-          if (permissionState === "granted") {
-            window.addEventListener("deviceorientation", handleOrientation);
-          } else {
-            alert("Permission to access device orientation was denied.");
-          }
-        })
-        .catch((error) => {
-          console.error(
-            "Error requesting permission for device orientation:",
-            error
-          );
-          alert("Error requesting permission for device orientation.");
-        });
-    } else if (window.DeviceOrientationEvent) {
-      // For browsers that do not require permission
-      window.addEventListener("deviceorientation", handleOrientation);
-    } else {
-      alert("Device Orientation API not supported.");
-    }
-  }
   init();
 
   board = document.querySelector(".board");
@@ -123,7 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keyup", stopDoodler);
 });
 
+
+
 const update = () => {
+console.log(gamma)
+document.getElementById("beta").textContent = gamma
+
   if (!gameOver()) {
     requestAnimationFrame(gameOver);
   } else {
@@ -179,17 +188,6 @@ const update = () => {
   while (platformArr.length > 0 && platformArr[0].y >= boardHeight) {
     platformArr.shift();
     newPlatforms();
-  }
-
-  if (gamma >= 5 || gamma <= -5) {
-    // document.getElementById("alpha").textContent = gamma;
-    velocityX = gamma / 4;
-    console.log(gamma, "gamma");
-  } else {
-    document.getElementById("alpha").textContent = gamma;
-
-    console.log(gamma, "gamma");
-    
   }
 };
 
