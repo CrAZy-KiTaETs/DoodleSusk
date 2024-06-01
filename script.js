@@ -32,6 +32,48 @@ let doodler = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  // запуск гироскопа
+  function handleOrientation(event) {
+    document.getElementById("alpha").textContent = event.alpha
+      ? event.alpha.toFixed(2)
+      : "N/A";
+    document.getElementById("beta").textContent = event.beta
+      ? event.beta.toFixed(2)
+      : "N/A";
+    document.getElementById("gamma").textContent = event.gamma
+      ? event.gamma.toFixed(2)
+      : "N/A";
+  }
+
+  function init() {
+    if (
+      typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function"
+    ) {
+      DeviceOrientationEvent.requestPermission()
+        .then((permissionState) => {
+          if (permissionState === "granted") {
+            window.addEventListener("deviceorientation", handleOrientation);
+          } else {
+            alert("Permission to access device orientation was denied.");
+          }
+        })
+        .catch((error) => {
+          console.error(
+            "Error requesting permission for device orientation:",
+            error
+          );
+          alert("Error requesting permission for device orientation.");
+        });
+    } else if (window.DeviceOrientationEvent) {
+      // For browsers that do not require permission
+      window.addEventListener("deviceorientation", handleOrientation);
+    } else {
+      alert("Device Orientation API not supported.");
+    }
+  }
+  init();
+
   board = document.querySelector(".board");
   board.height = boardHeight;
   board.width = boardWidth;
@@ -39,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load images
   doodlerRightImg = new Image();
-  doodlerRightImg.src = "./images/doodler-right.png";
   doodlerRightImg.onload = function () {
     doodler.img = doodlerRightImg;
     context.drawImage(
@@ -50,12 +91,15 @@ document.addEventListener("DOMContentLoaded", () => {
       doodlerHeight
     );
   };
+  doodlerRightImg.src = "./images/doodler-right.png";
+
   doodlerRightImg.onerror = function () {
     console.error("Error loading doodler-right.png");
   };
 
   doodlerLeftImg = new Image();
   doodlerLeftImg.src = "./images/doodler-left.png";
+
   doodlerLeftImg.onerror = function () {
     console.error("Error loading doodler-left.png");
   };
