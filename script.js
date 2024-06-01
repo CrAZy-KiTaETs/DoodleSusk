@@ -133,7 +133,7 @@ const update = () => {
   document.getElementById("alpha").textContent = a
 
 console.log(gamma)
-document.getElementById("beta").textContent = gamma
+document.getElementById("beta").textContent = gamma / 4
 
   if (!gameOver()) {
     requestAnimationFrame(gameOver);
@@ -190,6 +190,10 @@ document.getElementById("beta").textContent = gamma
   while (platformArr.length > 0 && platformArr[0].y >= boardHeight) {
     platformArr.shift();
     newPlatforms();
+  }
+
+  if (gamma >= 5 || gamma <= 5) {
+    velocityX = gamma / 4
   }
 };
 
