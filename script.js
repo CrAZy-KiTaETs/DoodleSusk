@@ -31,13 +31,13 @@ let doodler = {
   height: doodlerHeight,
 };
 
-let prevY
-let gamma
+let prevY;
+let gamma;
 
 document.addEventListener("DOMContentLoaded", () => {
   // запуск гироскопа
   function handleOrientation(event) {
-    alpha = Math.floor(event.gamma)
+    alpha = Math.floor(event.gamma);
     // document.getElementById("alpha").textContent = event.alpha
     //   ? event.alpha.toFixed(2)
     //   : "N/A";
@@ -124,10 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const update = () => {
-
-
-
-
   if (!gameOver()) {
     requestAnimationFrame(gameOver);
   } else {
@@ -143,7 +139,7 @@ const update = () => {
   } else if (doodler.x + doodlerWidth < 0) {
     doodler.x = boardWidth;
   }
-  prevY = doodler.y
+  prevY = doodler.y;
 
   velocityY += gravity;
   doodler.y += velocityY;
@@ -157,7 +153,6 @@ const update = () => {
       doodlerHeight
     );
   }
-  
 
   // Update platforms
   for (let i = 0; i < platformArr.length; i++) {
@@ -187,13 +182,10 @@ const update = () => {
   }
 
   if (gamma >= 5 || gamma <= -5) {
-    velocityX = gamma / 4
-    console.log(gamma, 'gamma')
-  } 
-  let a = gamma / 4
-
-  document.getElementById("alpha").textContent = a
-
+    document.getElementById("alpha").textContent = gamma;
+    velocityX = gamma / 4;
+    console.log(gamma, "gamma");
+  }
 };
 
 const moveDoodler = (e) => {
@@ -204,8 +196,6 @@ const moveDoodler = (e) => {
     velocityX = -4;
     doodler.img = doodlerLeftImg;
   }
-
-
 };
 
 const stopDoodler = (e) => {
