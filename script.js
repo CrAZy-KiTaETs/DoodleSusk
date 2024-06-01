@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load images
   doodlerRightImg = new Image();
-  doodlerRightImg.src = "/images/doodler-right.png";
+  doodlerRightImg.src = "./images/doodler-right.png";
   doodlerRightImg.onload = function () {
     doodler.img = doodlerRightImg;
     context.drawImage(
@@ -55,13 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   doodlerLeftImg = new Image();
-  doodlerLeftImg.src = "/images/doodler-left.png";
+  doodlerLeftImg.src = "./images/doodler-left.png";
   doodlerLeftImg.onerror = function () {
     console.error("Error loading doodler-left.png");
   };
 
   platformImg = new Image();
-  platformImg.src = "/images/platform.png";
+  platformImg.src = "./images/platform.png";
   platformImg.onerror = function () {
     console.error("Error loading platform.png");
   };
