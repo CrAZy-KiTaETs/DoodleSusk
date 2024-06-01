@@ -38,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // запуск гироскопа
   function handleOrientation(event) {
     alpha = Math.floor(event.gamma)
-    document.getElementById("alpha").textContent = event.alpha
-      ? event.alpha.toFixed(2)
-      : "N/A";
+    // document.getElementById("alpha").textContent = event.alpha
+    //   ? event.alpha.toFixed(2)
+    //   : "N/A";
     document.getElementById("beta").textContent = event.beta
       ? event.beta.toFixed(2)
       : "N/A";
@@ -143,7 +143,6 @@ const update = () => {
   } else if (doodler.x + doodlerWidth < 0) {
     doodler.x = boardWidth;
   }
-  console.log(doodler.y)
   prevY = doodler.y
 
   velocityY += gravity;
@@ -167,7 +166,6 @@ const update = () => {
       platform.y -= jumpHeight;
     }
     if (detectCollision(doodler, platform) && prevY < doodler.y) {
-      console.log('asdadad', velocityY, jumpHeight, doodler.y)
       // for (let i = velocityY; i <= velocityY)
       velocityY = jumpHeight;
     }
@@ -188,6 +186,13 @@ const update = () => {
     newPlatforms();
   }
 
+  if (gamma >= 5 || gamma <= -5) {
+    velocityX = gamma / 4
+    console.log(gamma, 'gamma')
+  } 
+  let a = gamma / 4
+
+  document.getElementById("alpha").textContent = a
 
 };
 
@@ -199,9 +204,8 @@ const moveDoodler = (e) => {
     velocityX = -4;
     doodler.img = doodlerLeftImg;
   }
-  if (gamma >= 5 || gamma <= -5) {
-    velocityX = gamma / 4
-  } 
+
+
 };
 
 const stopDoodler = (e) => {
