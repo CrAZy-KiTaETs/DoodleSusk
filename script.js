@@ -38,9 +38,9 @@ function handleOrientation(event) {
   gamma = event.gamma
   console.log("asda");
   alpha = Math.floor(event.gamma);
-  // document.getElementById("alpha").textContent = event.alpha
-  //   ? event.alpha.toFixed(2)
-  //   : "N/A";
+  document.getElementById("alpha").textContent = event.beta
+    ? gamma.toFixed(2)
+    : "N/A";
   document.getElementById("beta").textContent = event.beta
     ? event.beta.toFixed(2)
     : "N/A";
