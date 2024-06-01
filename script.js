@@ -182,9 +182,14 @@ const update = () => {
   }
 
   if (gamma >= 5 || gamma <= -5) {
-    document.getElementById("alpha").textContent = gamma;
+    // document.getElementById("alpha").textContent = gamma;
     velocityX = gamma / 4;
     console.log(gamma, "gamma");
+  } else {
+    document.getElementById("alpha").textContent = gamma;
+
+    console.log(gamma, "gamma");
+    
   }
 };
 
