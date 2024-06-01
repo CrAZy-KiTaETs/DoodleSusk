@@ -30,7 +30,7 @@ let doodler = {
   width: doodlerWidth,
   height: doodlerHeight,
 };
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", () => {
   board = document.querySelector(".board");
   board.height = boardHeight;
   board.width = boardWidth;
@@ -67,7 +67,8 @@ window.onload = function () {
 
   document.addEventListener("keydown", moveDoodler);
   document.addEventListener("keyup", stopDoodler);
-};
+} )
+
 
 
 const update = () => {
