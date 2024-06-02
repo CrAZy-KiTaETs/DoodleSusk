@@ -34,7 +34,6 @@ export class Player {
 
         // movement by phone
         let gamma = init()
-        console.log('iniot', gamma)
         if (window.screen.width < 768) {
             if (gamma >= 5 ||gamma <= 5) {
                this.vx = gamma / 4;
@@ -43,7 +42,6 @@ export class Player {
         // horizontal boundary
         if(this.x < -this.width/2) this.x = this.game.width - (this.width/2)
         if(this.x + (this.width/2) > this.game.width) this.x = - this.width/2
-        console.log(this.x)
 
         // vertical movement
         if(this.vy > this.weight){  

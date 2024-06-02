@@ -3,14 +3,6 @@ let gamma = 0
 
 function handleOrientation(event) {
   gamma = event.gamma;
-  console.log("asda");
-  alpha = Math.floor(event.gamma);
-  // document.getElementById("beta").textContent = event.beta
-  //   ? event.beta.toFixed(2)
-  //   : "N/A";
-  document.getElementById("gamma").textContent = event.gamma
-    ? event.gamma.toFixed(2)
-    : "N/A";
 }
  
 export function init() {
