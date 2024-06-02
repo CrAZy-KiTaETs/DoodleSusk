@@ -4,6 +4,8 @@ export class InputHandler {
     this.bulletKeyCount = 0;
     this.game = game;
 
+
+
     window.addEventListener("keydown", (e) => {
       if (
         (e.key == "ArrowLeft" || e.key == "ArrowRight") &&
