@@ -68,12 +68,10 @@ export class Player {
         this.vy = this.min_vy;
 
       if (platformType == "white") {
-        this.score = this.score + 1000
         new Audio("sound effects/single_jump.mp3").play()}
       else if (platformType == "blue" || platformType == "green") {
-        this.score = this.score + 1000
         
-        // new Audio("sound effects/jump.wav").play()
+        new Audio("sound effects/jump.wav").play()
       }
       else if (platformType == "brown")
         new Audio("sound effects/no_jump.mp3").play();
