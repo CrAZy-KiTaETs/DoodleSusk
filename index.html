@@ -3,19 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doodle Jump</title>
+    <title>DOODLE JUMP</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <p>Alpha: <span id="alpha">0</span></p>
-    <p>Beta: <span id="beta">0</span></p>
-    <p>Gamma: <span id="gamma">0</span></p>
-    <div class="container">
-      <canvas class="board">
-        <div class="doodler"></div>
-      </canvas>
+
+    <div class="popup">
+      <div class="container">
+        <h1>Специально для пользователей IOS</h1>
+        <p>
+          Для продолжения вы должны дать доступ к гироскопу вашего ****** айфона
+        </p>
+        <button id="startButton">Дать разрешение</button>
+      </div>
     </div>
-    <a href="/ASA/index.html" target="_blank" rel="noopener noreferrer">asdsadd</a>
-    <script src="script.js"></script>
+    <div class="game-wrapper">
+      <div class="hello-window">
+        <div class="wrapper">
+          <div class="black-screen"></div>
+          <div class="menu">
+            <p>Лучший счет - <span class="bestScore"></span></p>
+            <button class="start">Старт</button>
+          </div>
+          <div class="items-container">
+            <div class="doodle"></div>
+            <div class="platform"></div>
+          </div>
+        </div>
+      </div>
+      <canvas id="canvas1"></canvas>
+
+    </div>
+    <img src="images/background.png" id="bg" />
+    <img src="images/android.png" id="android" />
+    <img src="images/virus.png" id="virus" />
+    <img src="images/bullet.png" id="bullet" />
+    <img src="images/green_platform.png" id="green_platform" />
+    <img src="images/blue_platform.png" id="blue_platform" />
+    <img src="images/brown_platform.png" id="brown_platform" />
+    <img src="images/white_platform.png" id="white_platform" />
+
+
+    <script type="module" src="main.js"></script>
   </body>
 </html>
