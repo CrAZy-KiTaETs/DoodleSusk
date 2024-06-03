@@ -96,6 +96,8 @@ window.addEventListener("load", () => {
           helloWindow.style.display = "block";
           itemsContainer.style.display = "block";
           menu.style.display = "block";
+          board.style.zIndex = "0";
+
           if (this.score > this.bestScore) {
             this.bestScore = this.score;
           }
@@ -165,10 +167,11 @@ window.addEventListener("load", () => {
   let itemsContainer = document.querySelector(".items-container");
   let menu = document.querySelector(".menu");
   let bestScoreText = document.querySelector(".bestScore");
+  let board = document.getElementById("canvas1");
 
   start.addEventListener("click", () => {
     const blackScreen = document.querySelector(".black-screen");
-    console.log(bestScoreText.textContent, 'asdsa')
+    console.log(bestScoreText.textContent, "asdsa");
 
     blackScreen.style.display = "block";
     blackScreen.style.animationName = "hideWindow";
@@ -178,7 +181,11 @@ window.addEventListener("load", () => {
     }, 200);
     console.log(game, game.bestScore);
 
-    const newGame = new Game(canvas.width, canvas.height, bestScoreText.textContent);
+    const newGame = new Game(
+      canvas.width,
+      canvas.height,
+      bestScoreText.textContent
+    );
     newGame.firstGame = false;
     newGame.gameStart = true;
     function animate() {
@@ -189,8 +196,8 @@ window.addEventListener("load", () => {
     }
     setTimeout(() => {
       blackScreen.style.animationName = "none";
-
       animate();
+      board.style.zIndex = "5";
     }, 500);
   });
 });

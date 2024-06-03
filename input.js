@@ -19,7 +19,8 @@ export class InputHandler {
     });
 
     const touch = (e) => {
-      let board = document.getElementById("canvas1");
+      // let board = document.getElementById("canvas1");
+      let board = document.querySelector('.black-screen')
       if (e.target == board) {
         console.log("тач экрана", e.target);
         this.game.gameStart = true;
