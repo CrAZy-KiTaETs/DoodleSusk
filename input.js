@@ -23,7 +23,7 @@ export class InputHandler {
       let board = document.querySelector('.black-screen')
       if (e.target == board) {
         console.log("тач экрана", e.target);
-        this.game.gameStart = true;
+        // this.game.gameStart = true;
         window.removeEventListener("touchstart", touch);
         window.addEventListener("touchstart", (e) => {
           if (e.target == board && this.game.player.bullets.length < 3) {
