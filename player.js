@@ -30,84 +30,86 @@ export class Player {
     this.max_vy = this.game.platforms[0].height;
     this.vy = this.min_vy;
     this.weight = 0.5;
-    this.image = document.querySelector("#android");
+    this.image = document.querySelector("#player");
     this.vx = 0;
     this.max_vx = 8;
     this.bullets = [];
   }
 
   update(inputHandler) {
-    // horizontal movement
-    // movement on keys
-    this.x += this.vx;
-    if (inputHandler.keys.includes("ArrowLeft")) {
-      this.vx = -this.max_vx;
-    } else if (inputHandler.keys.includes("ArrowRight")) {
-      this.vx = this.max_vx;
-    } else this.vx = 0;
-
-    // movement by phone
-    let gamma = init();
-    if (window.screen.width < 768) {
-      if (gamma >= 5 || gamma <= 5) {
-        this.vx = gamma / 4;
+      // horizontal movement
+      // movement on keys
+      this.x += this.vx;
+      if (inputHandler.keys.includes("ArrowLeft")) {
+        this.vx = -this.max_vx;
+      } else if (inputHandler.keys.includes("ArrowRight")) {
+        this.vx = this.max_vx;
+      } else this.vx = 0;
+  
+      // movement by phone
+      let gamma = init();
+      if (window.screen.width < 768) {
+        if (gamma >= 5 || gamma <= 5) {
+          this.vx = gamma / 4;
+        }
       }
-    }
-    // horizontal boundary
-    if (this.x < -this.width / 2) this.x = this.game.width - this.width / 2;
-    if (this.x + this.width / 2 > this.game.width) this.x = -this.width / 2;
-
-    // vertical movement
-    if (this.vy > this.weight) {
-      let platformType = this.onPlatform();
-      if (
-        platformType == "white" ||
-        platformType == "blue" ||
-        platformType == "green"
-      )
-        this.vy = this.min_vy;
-
-      if (platformType == "white") {
-        new Audio("sound effects/single_jump.mp3").play()}
-      else if (platformType == "blue" || platformType == "green") {
-        
-        new Audio("sound effects/jump.wav").play()
+      // horizontal boundary
+      if (this.x < -this.width / 2) this.x = this.game.width - this.width / 2;
+      if (this.x + this.width / 2 > this.game.width) this.x = -this.width / 2;
+  
+      // vertical movement
+      if (this.vy > this.weight) {
+        let platformType = this.onPlatform();
+        if (
+          platformType == "white" ||
+          platformType == "blue" ||
+          platformType == "green"
+        )
+          this.vy = this.min_vy;
+  
+        if (platformType == "white") {
+          new Audio("sound effects/single_jump.mp3").play()}
+        else if (platformType == "blue" || platformType == "green") {
+          
+          new Audio("sound effects/jump.wav").play()
+        }
+        else if (platformType == "brown")
+          new Audio("sound effects/no_jump.mp3").play();
       }
-      else if (platformType == "brown")
-        new Audio("sound effects/no_jump.mp3").play();
-    }
-
-    if (this.vy < this.max_vy) this.vy += this.weight;
-    if (this.y > this.min_y || this.vy > this.weight) this.y += this.vy;
-
-    if (this.y <= this.min_y && this.vy < this.weight) this.game.vy = -this.vy;
-    else this.game.vy = 0;
-
-    // game over
-    if (this.collision()) {
-      this.game.gameOver = true;
-      this.game.enemies.forEach((enemy) => {
-        enemy.audio.pause();
-      });
-      new Audio("sound effects/crash.mp3").play();
-    }
-
-    if (this.y > this.game.height && !this.game.gameOver) {
-      this.game.gameOver = true;
-      this.game.enemies.forEach((enemy) => {
-        enemy.audio.pause();
-      });
-      new Audio("sound effects/fall.mp3").play();
-    }
-
-    // bullet
-    if (inputHandler.bulletKeyCount > 0) {
-      inputHandler.bulletKeyCount--;
-      this.bullets.push(new Bullet(this));
-    }
-
-    this.bullets.forEach((bullet) => bullet.update());
-    this.bullets = this.bullets.filter((bullet) => !bullet.markedForDeletion);
+  
+      if (this.vy < this.max_vy) this.vy += this.weight;
+      if (this.y > this.min_y || this.vy > this.weight) this.y += this.vy;
+  
+      if (this.y <= this.min_y && this.vy < this.weight) this.game.vy = -this.vy;
+      else this.game.vy = 0;
+  
+      // game over
+      if (this.collision()) {
+        this.game.gameOver = true;
+        this.game.enemies.forEach((enemy) => {
+          enemy.audio.pause();
+        });
+        new Audio("sound effects/crash.mp3").play();
+      }
+  
+      if (this.y > this.game.height && !this.game.gameOver) {
+        this.game.gameOver = true;
+        this.game.enemies.forEach((enemy) => {
+          enemy.audio.pause();
+        });
+        new Audio("sound effects/fall.mp3").play();
+      }
+  
+      // bullet
+      if (inputHandler.bulletKeyCount > 0) {
+        inputHandler.bulletKeyCount--;
+        this.bullets.push(new Bullet(this));
+      }
+  
+      this.bullets.forEach((bullet) => bullet.update());
+      this.bullets = this.bullets.filter((bullet) => !bullet.markedForDeletion);
+      
+    
   }
 
   draw(context) {

@@ -10,29 +10,30 @@ export class Background {
     }
 
     update(){
-        // console.log(this.y, this.height, 'THIIIIS')
-
-        if (this.game.score > 100) {
-            // console.log(this.game)
-            // this.image = document.querySelector("#android")
-        }
-        if(this.lol > this.height){
-            console.log(this.y, this.height, 'THIIIIS')
-
-            this.lol = 0
-            this.y += 10
-            this.game.add_platforms(-this.height, -15)
-            this.game.add_broken_platforms(-this.height, -15)
-            this.game.change_difficulty()
-
-            if(Math.random() < this.game.enemyChance/100){
-                this.game.add_enemy()
+            if (this.game.score > 100) {
+                // console.log(this.game)
+                // this.image = document.querySelector("#android")
             }
-        } 
-        else{
-            this.lol += this.game.vy
-            this.game.score += Math.trunc(this.game.vy * 0.2)
-        }
+            if(this.lol > this.height){
+                // console.log(this.y, this.height, 'THIIIIS')
+    
+                this.lol = 0
+                this.y += 10
+                this.game.add_platforms(-this.height, -25)
+                this.game.add_broken_platforms(-this.height, -25)
+                this.game.change_difficulty()
+    
+                if(Math.random() < this.game.enemyChance/100){
+                    this.game.add_enemy()
+                }
+            } 
+            else{
+                this.lol += this.game.vy
+                this.game.score += Math.trunc(this.game.vy * 0.2)
+            }
+      
+           
+
     }
 
 

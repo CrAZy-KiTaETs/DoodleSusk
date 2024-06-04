@@ -1,3 +1,26 @@
+// function showFPS() {
+// context.fillStyle = "Black";
+// context.font = "normal 16pt Arial";
+// context.fillText(fps + " fps", 10, 26);
+// }
+
+// function gameLoop(TIME) {
+//   setTimeout(() => {
+//     // Clear screen
+// context.clearRect(0, 0, width, height);
+
+// if (show_fps) showFPS();
+
+// fps = 1 / ((performance.now() - LAST_FRAME_TIME) / 1000);
+// LAST_FRAME_TIME = TIME /* remember the time of the rendered frame */
+
+// if (game_running) requestAnimationFrame(gameLoop);
+//   }, 24);
+
+// }
+
+// gameLoop();
+
 import { Player } from "./player.js";
 import { Background } from "./background.js";
 import { InputHandler } from "./input.js";
@@ -42,6 +65,7 @@ window.addEventListener("load", () => {
     }
 
     update() {
+      // console.log('aa')
       this.background.update();
 
       this.platforms.forEach((platform) => {
@@ -188,15 +212,20 @@ window.addEventListener("load", () => {
     );
     newGame.firstGame = false;
     newGame.gameStart = true;
+
     function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (newGame.gameStart) newGame.update();
-      newGame.draw(ctx);
-      if (!newGame.gameOver) requestAnimationFrame(animate);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (newGame.gameStart) newGame.update();
+        newGame.draw(ctx);
+        if (!newGame.gameOver) {
+          requestAnimationFrame(animate);
+        }
+        
+      // lastRender = now;
     }
     setTimeout(() => {
       blackScreen.style.animationName = "none";
-      animate();
+        animate();
       board.style.zIndex = "5";
     }, 500);
   });

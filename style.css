@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.text {
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+}
+
 .game-wrapper {
   max-width: 500px;
   max-height: 850px;
@@ -28,20 +38,22 @@
 }
 
 #bg,
-#android,
-#virus,
+#player,
+#enemy,
 #green_platform,
 #blue_platform,
 #brown_platform,
 #white_platform,
-#bullet, #cropBg, #cropBgTop {
+#bullet,
+#cropBg,
+#cropBgTop {
   display: none;
 }
 
 .popup {
   position: fixed;
   top: 0;
-  left: 0; 
+  left: 0;
   width: 100dvw;
   height: 100dvh;
   background-color: rgba(128, 128, 128, 0.856);
@@ -120,7 +132,7 @@ p {
 }
 
 .doodle {
-  background-image: url(./images/android.png);
+  background-image: url(./images/player.png);
   height: 80px;
   width: 100%;
   background-position: center;

@@ -2,6 +2,9 @@
 let gamma = 0
 
 function handleOrientation(event) {
+  document.querySelector(".alpha").textContent = event.alpha
+  document.querySelector(".betta").textContent = event.betta
+  document.querySelector(".gamma").textContent = event.gamma
   gamma = event.gamma;
 }
  
