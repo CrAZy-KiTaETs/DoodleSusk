@@ -34,7 +34,7 @@
 #blue_platform,
 #brown_platform,
 #white_platform,
-#bullet {
+#bullet, #cropBg, #cropBgTop {
   display: none;
 }
 
