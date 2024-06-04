@@ -31,6 +31,7 @@ export function init() {
   } else {
     alert("Device Orientation API not supported.");
   }
+  return gamma
 }
 
 
