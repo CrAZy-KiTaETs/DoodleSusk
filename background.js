@@ -29,7 +29,7 @@ export class Background {
             } 
             else{
                 this.lol += this.game.vy
-                this.game.score += Math.trunc(this.game.vy * 0.2)
+                this.game.score += Math.trunc(this.game.vy * 0.1)
             }
       
            
