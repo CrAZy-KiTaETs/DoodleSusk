@@ -2,10 +2,9 @@
 let gamma = 0
 
 function handleOrientation(event) {
-  gamma = event.gamma;
-  document.querySelector(".alpha").textContent = Math.floor(event.alpha)
-  document.querySelector(".betta").textContent = Math.floor(event.beta)
-  document.querySelector(".gamma").textContent = Math.floor(gamma) 
+  gamma = Math.floor(event.gamma)  ;
+  document.querySelector(".alpha").textContent = Math.floor(event.gamma)
+  document.querySelector(".betta").textContent = Math.floor(gamma)
 }
  
 export function init() {

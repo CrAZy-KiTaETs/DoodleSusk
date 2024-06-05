@@ -50,7 +50,7 @@ export class Player {
       let gamma = init();
       if (window.screen.width < 768) {
         if (gamma >= 5 || gamma <= 5) {
-          this.vx = gamma / 4;
+          this.vx = gamma;
         }
       }
       // horizontal boundary
