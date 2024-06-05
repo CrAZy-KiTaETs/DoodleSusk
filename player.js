@@ -37,6 +37,8 @@ export class Player {
   }
 
   update(inputHandler) {
+
+    console.log(this.max_vy, 'yyy')
       // horizontal movement
       // movement on keys
       this.x += this.vx;
