@@ -15,7 +15,7 @@ export class Player {
   constructor(game) {
     this.game = game;
     this.sizeModifier = 0.2;
-    this.width = 395 * this.sizeModifier;
+    this.width = 488 * this.sizeModifier;
     this.height = 488 * this.sizeModifier;
     this.x =
       this.game.platforms
@@ -38,7 +38,6 @@ export class Player {
 
   update(inputHandler) {
 
-    console.log(this.max_vy, 'yyy')
       // horizontal movement
       // movement on keys
       this.x += this.vx;
@@ -52,7 +51,7 @@ export class Player {
       let gamma = init();
       if (window.screen.width < 768) {
         if (gamma >= 5 || gamma <= 5) {
-          this.vx = gamma;
+          this.vx = gamma / 4;
         }
       }
       // horizontal boundary

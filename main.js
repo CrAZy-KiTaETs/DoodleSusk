@@ -75,7 +75,8 @@ window.addEventListener("load", () => {
           const menu = document.querySelector(".menu");
           const bestScoreText = document.querySelector(".bestScore");
           const board = document.getElementById("canvas1");
-
+          accumulatedTime = 0
+          lastTime = 0
           helloWindow.style.display = "block";
           itemsContainer.style.display = "block";
           menu.style.display = "block";
@@ -159,6 +160,7 @@ window.addEventListener("load", () => {
       accumulatedTime += deltaTime;
 
       while (accumulatedTime >= interval) {
+        console.log('loop')
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         if (game.gameStart) game.update(deltaTime);
         accumulatedTime -= interval;
