@@ -7,8 +7,9 @@ export class InputHandler {
 
 
     window.addEventListener("keydown", (e) => {
+      console.log(e.key)
       if (
-        (e.key === "ArrowLeft" || e.key === "ArrowRight") &&
+        (e.key == "ArrowLeft" || e.key == "ArrowRight") &&
         !this.keys.includes(e.key)
       ) {
         this.keys.push(e.key);
@@ -19,25 +20,25 @@ export class InputHandler {
     });
 
     const touch = (e) => {
-      // let board = document.getElementById("canvas1");
+      let board = document.getElementById("canvas1");
       // let board = document.querySelector('.black-screen')
-      // if (e.target == board) {
-      //   console.log("тач экрана", e.target);
-      //   // this.game.gameStart = true;
-      //   window.removeEventListener("touchstart", touch);
-      //   window.addEventListener("touchstart", (e) => {
-      //     if (e.target == board && this.game.player.bullets.length < 3) {
-      //       this.bulletKeyCount++;
-      //     }
-      //   });
-      // }
+      if (e.target == board) {
+        console.log("тач экрана", e.target);
+        // this.game.gameStart = true;
+        window.removeEventListener("touchstart", touch);
+        window.addEventListener("touchstart", (e) => {
+          if (e.target == board && this.game.player.bullets.length < 3) {
+            this.bulletKeyCount++;
+          }
+        });
+      }
     };
 
     window.addEventListener("touchstart", touch);
 
     window.addEventListener("keyup", (e) => {
       if (
-        (e.key === "ArrowLeft" || e.key === "ArrowRight") &&
+        (e.key == "ArrowLeft" || e.key == "ArrowRight") &&
         this.keys.includes(e.key)
       ) {
         this.keys.splice(this.keys.indexOf(e.key), 1);
