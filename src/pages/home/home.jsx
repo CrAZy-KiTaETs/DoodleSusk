@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { increment } from "../../store/slicer";
 
 export function Home() {
-  const [show, setShow] = useState(true);
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state);

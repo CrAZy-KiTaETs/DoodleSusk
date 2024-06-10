@@ -14,12 +14,10 @@ import { useRef, useEffect, useState } from "react";
 
 const Game = ({ hideNav }) => {
   const canvasRef = useRef(null);
-  const gameRef = useRef(null);
   const windowWidth = useRef(window.innerWidth);
   const windowHeight = useRef(window.innerHeight);
 
   const [playing, setPlaying] = useState(false);
-  const [first, setFirst] = useState(true);
 
   const FPS = 60;
   const interval = 1000 / FPS;
@@ -32,21 +30,17 @@ const Game = ({ hideNav }) => {
 
   let canvas;
   let ctx;
-  let width;
-  let height;
+
   let newGame;
   const start = (set) => {
     hideBtn(set);
-    if (first) {
       canvas = canvasRef.current;
       ctx = canvas.getContext("2d");
       canvas.width = windowWidth.current;
       canvas.height = windowHeight.current;
-    }
 
     newGame = new GameLogic(canvas.width, canvas.height);
 
-    // newGame.firstGame = false;
     newGame.gameStart = true;
     function animate(timestamp) {
       if (!lastTime) lastTime = timestamp;
