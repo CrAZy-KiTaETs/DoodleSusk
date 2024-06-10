@@ -1,0 +1,49 @@
+@import "../../assets/styles/global.scss";
+
+.magazine {
+  background-color: #343434;
+  height: calc(100% - 85px);
+  ul {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    li {
+    width: 100%;
+      border: 1px solid black;
+      border-radius: 1rem;
+      display: grid;
+      grid-template-columns: 50px 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      padding-left: .5rem;
+      cursor: pointer;
+      animation: ani .3s ease-in-out;
+      animation-fill-mode: forwards;
+      scale: 0;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: burlywood;
+      border: none;
+      padding: .3rem 1rem .3rem 0.3rem;
+      border-radius: 0 1rem 1rem 0;
+    }
+  }
+  p {
+    color: red;
+  }
+
+
+
+  @keyframes ani {
+    from {
+        scale: 0;
+    }
+    to {
+        scale: 1;
+    }
+  }
+}

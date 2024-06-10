@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "telegabot-421308",
+  "private_key_id": "9a25c6545ece89fef0c92e0b9a6bc0645e483975",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/W0p+8lTPosbZ\nVrIIFXEOCjyoeG2h8kYQQHHfN96okA4wJURIceoMmiSPbanFMpmxf4PyzFLjQ+f9\n+5B5QCWJR5AG5otu3MIXFp19QBM8h2XHkgFMGfNwoSxMNB5pBjROF6E8h2L6tS1H\nNcXtQTKTwgrtksqzx44n3cQyNPvxZP/cO3nlbgsbKEpKpgkqrpa8/NEyagTzoo2v\nOYPZYfFVV9/mF/DHAEE5GtgjczP9QhZ3LEWYrIXzVfcQOEfAxNQ891KD9mtuPnlb\nFPZHJRIQhig7XXXZrpsn0ez1XxAQ8Q/6xKVLrMqiR7VXlO6PB/NLHuO9Ozy90Vzj\nhKOyALnRAgMBAAECggEAK6j/qVFPSoTATAx82F1UCzkIuAOqN/4YQFMD6ENOGTWt\nFw0ZtFHRbgipeNQznRu7d4U5rOczrkjrIMcKIrAhIF5knT5y59uUqUHuswowmWnn\nLg7BHwT4x2Tuv4BQw/O3cW3wyue1DLDT4OCDBWwPxyjJ54TLnRNV+wCdaDswlNXq\nXAFAGKBrmQKJqhpPy9zsKbtY/U6q9yGyeGEkDhZ8O9MeWhkaDihcVhaC1VuiaYXE\nzJk4CPQf/SdDGWD7E1s9RRQ5c7f5AeDGMa5T8jXX3GlKBUVWMFZkNeztq16eOFDr\nfQL7px6IZQobGdYl+vg2LBmK7a8Hb/SxiwddhmsFVQKBgQDrrL4fNYl+F0ILW6HT\n0482iY799Xx6VxCWCE7tLzh+B1JHdTUoV7WvNlyXguUK+pQtOf+A4BUyTVj4ASn9\nOFN02OIdqA/pFh5L+TQP8bomkYEF+iSXagP6naxq37QCysWYTkhglLMX6TW4LogX\nOdUiQdFL6/2Ny57ruOz2GrzOYwKBgQDP3BYQ0Kb3GjjSmjywo0dMxndzl71pXg12\nh4HbLR9/fTdt/voHmq8kyuY6zvpDA3a6EPPrDOxLu+pDK2fbWRDJRk1aHR8dFIV1\ntTYUZSwEx0ynsrB/bI7MFplipYrWpPIIPSTbnIV1pR3VcTU/isgjMP4r4xS/JGQ8\nixWJgUYDOwKBgGRfhfm0y4IwVaiQtjOJfw0zOPtgekuAmUfM8hCCdAT5CUn12VX9\nRRwCgxzkWrh6UHGSqgcxaNWrq6C0njWCr8isNmF7GoujJ/QjhtDjmuyiO9lX2A3E\n0T0DulMqQ3iM8+sSLDE2I7CjWoW/C6cYsnWMop87OxoRBvZOJF4MtS0RAoGAHOZk\nywG3tTOYIu/+8DBDgZE2moPGehfxl0FP9MFZV8h5JHoHGXeQUnVDfXm5ogehQk2J\nHG03jXAbKiumzQCdLN7xck4KPWjVBYCkfEF01VVAezCFCbJ2SDn8KZMKsr1MSYj2\nzvH8PFcwxrRuyt7o5LuzGzb/c3QD28cav3uR2HECgYEAkFaGcUKfzZfBPQMjgTEL\njEaWJ7b260KZXbr5B9jx91/ldY8vrzjY1kP88Er7idyhqipVFDztu7eE4o87+qDi\n/QX4LTIZTtI87HBvZdh+TMIcWECWCXr8ukXuTCmiW2qQW+OWBRVDt2sUeoKkm+WA\nkVJTTI4qwvL9vGUtvCgI5b0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "elon-susk@telegabot-421308.iam.gserviceaccount.com",
+  "client_id": "108180785905620775650",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/elon-susk%40telegabot-421308.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

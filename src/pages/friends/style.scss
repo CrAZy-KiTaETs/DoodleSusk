@@ -1,0 +1,49 @@
+.friends {
+  height: calc(100% - 85px);
+  background-color: cornsilk;
+  position: relative;
+  overflow-y: auto;
+  .ref {
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    &__btn {
+      padding: 1rem 1.5rem;
+    }
+    p {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  &__list {
+    margin-top: 3rem;
+    text-align: center;
+    border-radius: .7rem .7rem 0 0;
+    ul {
+        padding: .3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        overflow-y: auto;
+        li {
+          width: 100%;
+          border: 1px solid black;
+          border-radius: 1rem;
+          display: grid;
+          grid-template-columns: 50px 1fr;
+          gap: 1.5rem;
+          align-items: center;
+          padding-left: 0.5rem;
+          animation: ani 0.3s ease-in-out;
+          animation-fill-mode: forwards;
+          scale: 0;
+          img {
+            width: 100%;
+          }
+        }
+
+    }
+  }
+}

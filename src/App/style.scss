@@ -1,0 +1,81 @@
+@import "../assets/styles/global.scss";
+.app-container {
+  max-width: 768px;
+  width: 100%;
+  height: 100dvh;
+  margin: auto;
+  border: 1px solid black;
+  overflow: hidden;
+  background-color: black;
+  position: relative;
+
+  
+.nav {
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  background-color: gray;
+  height: 85px;
+  animation: showNav 2s ease-in-out;
+  animation-fill-mode: forwards;
+  &.hide {
+    animation: hideNav 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  &__list {
+    display: flex;
+    gap: 1rem;
+    height: 85px;
+
+    z-index: -2;
+    li {
+      width: 100%;
+      position: relative;
+    }
+  }
+  &__btn {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+    transition: 1s;
+    &.active {
+      // scale: 1.05;
+      // font-size: 1.1rem;
+    }
+  }
+  .activeBtnBackround {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: calc(100% /4 - 1.25rem);
+    height: calc(100% - 2rem);
+    background-color: wheat;
+    z-index: 0;
+    transition: .5s;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes showNav {
+  from {
+    bottom: -50%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+@keyframes hideNav {
+  from {
+    bottom: 0%;
+  }
+  to {
+    bottom: -50%;
+  }
+}
+
+}

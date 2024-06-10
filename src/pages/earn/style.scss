@@ -1,0 +1,39 @@
+.earn {
+  color: red;
+  background-color: #434343;
+  height: 100%;
+  .about {
+    width: 100%;
+    padding: 1rem;
+  }
+  ul {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    li {
+      width: 100%;
+      border: 1px solid black;
+      border-radius: 1rem;
+      display: grid;
+      grid-template-columns: 50px 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+      padding-left: 0.5rem;
+      cursor: pointer;
+      animation: ani 0.3s ease-in-out;
+      animation-fill-mode: forwards;
+      scale: 0;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: burlywood;
+      border: none;
+      padding: 0.3rem 1rem 0.3rem 0.3rem;
+      border-radius: 0 1rem 1rem 0;
+    }
+  }
+}

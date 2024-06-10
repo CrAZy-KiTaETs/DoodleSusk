@@ -1,0 +1,84 @@
+@import "../../assets/styles/global.scss";
+
+.home {
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+  animation: show 2s ease-in-out;
+  animation-fill-mode: forwards;
+
+  &__rocket {
+    z-index: 1;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    animation: showRocket 2s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  &__coins-wrapper {
+    width: 90%;
+    height: 50px;
+    left: 5%;
+    position: absolute;
+    top: -100%;
+    border-radius: 1rem;
+    background-color: rgba($red, $alpha: 0.8);
+    z-index: 1;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img {
+      height: 100%;
+    }
+    animation: showCoinsWrapper 1.8s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+}
+.background {
+  width: 100dvw;
+  height: 200%;
+  background-image: url("../../assets/gifs/stars.gif");
+  position: absolute;
+  left: 0;
+  bottom: 0%;
+  animation: backgorundAni 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes showRocket {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 50%;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backgorundAni {
+  from {
+    bottom: 0%;
+  }
+  to {
+    bottom: -100%;
+  }
+}
+
+@keyframes showCoinsWrapper {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 1rem;
+  }
+}
