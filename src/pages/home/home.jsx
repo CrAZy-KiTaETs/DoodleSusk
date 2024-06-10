@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./style.scss";
 import cn from "classnames";
 import rocket from "../../assets/images/rocket.png";
