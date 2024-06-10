@@ -2,7 +2,7 @@ import "./style.scss";
 import back from "./scripts/images/background.png";
 import backTop from "./scripts/images/crop-bg-top.png";
 import enemy from "./scripts/images/enemy.png";
-import player from "./scripts/images/player.png";
+import player from "./scripts/images/player.svg";
 import bullet from "./scripts/images/bullet.png";
 import green_platform from "./scripts/images/green_platform.png";
 import blue_platform from "./scripts/images/blue_platform.png";
