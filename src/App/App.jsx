@@ -58,7 +58,8 @@ export function App() {
     let init = tg.initDataUnsafe.user;
     if (init) {
       console.log(tg, init, "это тг");
-      add(init);
+      // add(init);
+      get()
     } else {
       console.log("Подключения нет");
     }
