@@ -12,11 +12,11 @@ import axios from "axios";
 export function App() {
   const [user, setUser] = useState(false);
   const [activeBtn, setActiveBtn] = useState("Home");
-  const [isNavHide, setIsNavHide] = useState(false)
+  const [isNavHide, setIsNavHide] = useState(false);
 
   const hideNav = (state) => {
-    setIsNavHide(state)
-  }
+    setIsNavHide(state);
+  };
 
   const [aciveBackground, setActiveBackround] = useState({
     width: "calc(100% / 4 - 3rem)",
@@ -32,10 +32,9 @@ export function App() {
   };
 
   const connetctToDB = async () => {
-  let res = await axios.get("http://localhost:4000/users/test-db")
-  console.log(res)
-  }
-
+    let res = await axios.get("http://localhost:4000/users/test-db");
+    console.log(res);
+  };
 
   const changeActivebtn = (e, btn, id) => {
     setActiveBtn(btn);
@@ -55,14 +54,17 @@ export function App() {
   // }, [isNavHide]);
 
   useEffect(() => {
-    const app = window.Telegram?.WebApp;
-    if (app) {
-      app.ready();
-      console.log(app, 'это тг')
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      let init = tg.initData;
+      //       let tg = (window as any).Telegram?.WebApp.expand();
+      // const urlParams = new URLSearchParams((window as any).Telegram?.WebApp.initData);
+      // const user = urlParams.get('user');
+      console.log(tg, init, "это тг");
+    } else {
+      console.log("Подключения нет");
     }
-    console.log(app, 'это НЕ тг')
-
-
   }, []);
   return (
     <div className="app-container">
@@ -72,12 +74,12 @@ export function App() {
         </>
       ) : (
         <>
-          {activeBtn === "Home" && <Home />} 
-          {activeBtn === "Daily" &&  <Earn />} 
-          {activeBtn === "Friends" && <Friends />} 
-          {activeBtn === "Game" && <Game hideNav={hideNav} />} 
-          {activeBtn === "Shop" && <Magazine />} 
-        
+          {activeBtn === "Home" && <Home />}
+          {activeBtn === "Daily" && <Earn />}
+          {activeBtn === "Friends" && <Friends />}
+          {activeBtn === "Game" && <Game hideNav={hideNav} />}
+          {activeBtn === "Shop" && <Magazine />}
+
           <nav className={cn("nav", { hide: isNavHide })}>
             <ul className="nav__list">
               {navBtns.map((btn, key) => (
