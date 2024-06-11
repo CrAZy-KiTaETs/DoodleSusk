@@ -55,17 +55,35 @@ export function App() {
 
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
-    if (tg) {
-      tg.ready();
-      let init = tg.initData;
-      //       let tg = (window as any).Telegram?.WebApp.expand();
-      // const urlParams = new URLSearchParams((window as any).Telegram?.WebApp.initData);
-      // const user = urlParams.get('user');
+    let init = tg.initDataUnsafe.user;
+    if (init) {
       console.log(tg, init, "это тг");
+      add(init)
     } else {
       console.log("Подключения нет");
     }
   }, []);
+
+  const add = async (tg) => {
+    let user = {
+      id: tg.id,
+      username: tg.username,
+      ref: "3sda3sd",
+      wallet: "sad",
+      balance: "0",
+      invited: "false",
+      is_sub: "false",
+      ref_count: "0",
+      twitter: "asdw3f",
+      inf: "false",
+      inf_sub: '"false"',
+      inf_link: "",
+    };
+    let res = await axios.post("http://localhost:4000/users/add/", user, {
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(res, 'тип отправил данные')
+  };
   return (
     <div className="app-container">
       {!user ? (
