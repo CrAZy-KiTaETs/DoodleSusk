@@ -34,20 +34,12 @@ const Game = ({ hideNav }) => {
   let newGame;
   const start = (set) => {
     hideBtn(set);
-    const dpr = window.devicePixelRatio || 1;
     
     canvas = canvasRef.current;
-    // ctx = canvas.getContext("2d");
-    // canvas.width = windowWidth.current;
-    // canvas.height = windowHeight.current;
+    ctx = canvas.getContext("2d");
+    canvas.width = windowWidth.current;
+    canvas.height = windowHeight.current;
     
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-    // return context;
-
     newGame = new GameLogic(canvas.width, canvas.height);
 
     newGame.gameStart = true;

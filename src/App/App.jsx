@@ -7,6 +7,7 @@ import Earn from "../pages/earn/Earn";
 import Friends from "../pages/friends/Friends";
 import Game from "../pages/game/Game";
 import Magazine from "../pages/magazine/Magazine";
+import axios from "axios";
 
 export function App() {
   const [user, setUser] = useState(false);
@@ -30,6 +31,12 @@ export function App() {
     setUser(true);
   };
 
+  const connetctToDB = async () => {
+  let res = await axios.get("http://localhost:4000/users/test-db")
+  console.log(res)
+  }
+
+
   const changeActivebtn = (e, btn, id) => {
     setActiveBtn(btn);
     let opt = {
@@ -43,9 +50,20 @@ export function App() {
     console.log(aciveBackground);
   };
 
-  useEffect((e) => {
-    console.log(isNavHide, 'aaaaaaaaaaaa')
-  }, [isNavHide]);
+  // useEffect((e) => {
+  //   console.log(isNavHide, 'aaaaaaaaaaaa')
+  // }, [isNavHide]);
+
+  useEffect(() => {
+    const app = window.Telegram?.WebApp;
+    if (app) {
+      app.ready();
+      console.log(app, 'это тг')
+    }
+    console.log(app, 'это НЕ тг')
+
+
+  }, []);
   return (
     <div className="app-container">
       {!user ? (
