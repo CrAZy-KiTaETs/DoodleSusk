@@ -1,5 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const user = {
+    id: "",
+    username: "",
+    ref: "",
+    wallet: "",
+    balance: "",
+    invited: "",
+    is_sub: "",
+    ref_count: "",
+    twitter: "",
+    inf: "",
+    inf_sub: "",
+    inf_link: "",
+}
+
 
 export const slicer = createSlice({
     name: "counter",

@@ -58,7 +58,7 @@ export function App() {
     let init = tg.initDataUnsafe.user;
     if (init) {
       console.log(tg, init, "это тг");
-      add(init)
+      add(init);
     } else {
       console.log("Подключения нет");
     }
@@ -82,7 +82,12 @@ export function App() {
     let res = await axios.post("http://localhost:4000/users/add/", user, {
       headers: { "Content-Type": "application/json" },
     });
-    console.log(res, 'тип отправил данные')
+    console.log(res, "тип отправил данные");
+  };
+
+  const get = async () => {
+    let res = await axios.get("http://localhost:4000/users/");
+    console.log(res, "uusers");
   };
   return (
     <div className="app-container">
