@@ -128,7 +128,7 @@ export function App() {
     params ? console.log(params, 'paraaaaaams') : console.log('ПАРАМЕТРОВ НЕТ')
     if (tgInit) {
       console.log(tgInit, "Данные пользователя с TG");
-      let userFromBD = await findUser();
+      let userFromBD = await findUser(tgInit.id);
       if (userFromBD) {
         userFromBD.username = tgInit.username
           ? tgInit.username
