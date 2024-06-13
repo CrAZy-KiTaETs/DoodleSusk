@@ -115,12 +115,10 @@ export function App() {
     return res.data;
   };
 
-  const udpateUser = async (user) => {
-    let res = await axios.put(`${URL}/findById/${user.id}`, user, {
+  const udpateUser = (user) => {
+     axios.put(`${URL}/findById/${user.id}`, user, {
       headers: { "Content-Type": "application/json" },
     });
-    console.log(res.data, "Найденый юзер в БД");
-    return res.data;
   };
 
   const aaaNewU = {
