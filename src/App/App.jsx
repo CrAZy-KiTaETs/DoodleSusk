@@ -14,6 +14,8 @@ export function App() {
   const [activeBtn, setActiveBtn] = useState("Home");
   const [isNavHide, setIsNavHide] = useState(false);
 
+  const URL = "http://localhost:4000/users";
+
   const hideNav = (state) => {
     setIsNavHide(state);
   };
@@ -53,26 +55,13 @@ export function App() {
   //   console.log(isNavHide, 'aaaaaaaaaaaa')
   // }, [isNavHide]);
 
-  useEffect(() => {
-    const tg = window.Telegram?.WebApp;
-    let init = tg.initDataUnsafe.user;
-    let params = tg.initDataUnsafe.start_param;
-    if (init) {
-      console.log(tg, init, "это тг");
-      add(init);
-    } else {
-      console.log("Подключения нет");
-    }
-    // find()
-  }, []);
-
   const add = async (tg) => {
     try {
       let user = await find();
       if (!user) {
         let newUser = {
           id: 714289599,
-          username: 'crazy',
+          username: "crazy",
           ref: "https://t.me/ElonSusk_bot?start=73b6b064-ce77-4273-ba59-617fe85646a3",
           wallet: "",
           balance: 0,
@@ -94,7 +83,6 @@ export function App() {
         return console.log(res, "Пользователь создан");
       }
       console.log("Пользователь уже существует");
-
     } catch (error) {
       console.log("ошибка при создании пользователя", error);
     }
@@ -111,11 +99,49 @@ export function App() {
     return res.data;
   };
 
+  const findUser = async (id) => {
+    let res = await axios.get(`${URL}/findById/${id}`);
+    console.log(res.data, "Найденый юзер в БД");
+    return res.data;
+  };
+
   const findRef = async () => {
-    let res = await axios.get("http://localhost:4000/users/findByRef/73b6b064-ce77-4273-ba59-617fe85646a3");
+    let res = await axios.get(
+      "http://localhost:4000/users/findByRef/73b6b064-ce77-4273-ba59-617fe85646a3"
+    );
     console.log(res.data, "find");
     return res.data;
   };
+
+  const udpateUser = async (user) => {
+    let res = await axios.put(`${URL}/findById/${user.id}`, user, {
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(res.data, "Найденый юзер в БД");
+    return res.data;
+  };
+
+  useEffect(async () => {
+    const tg = window.Telegram?.WebApp;
+    let tgInit = tg.initDataUnsafe.user;
+    let params = tg.initDataUnsafe.start_param;
+    params ? console.log(params, 'paraaaaaams') : console.log('ПАРАМЕТРОВ НЕТ')
+    if (tgInit) {
+      console.log(tgInit, "Данные пользователя с TG");
+      let userFromBD = await findUser();
+      if (userFromBD) {
+        userFromBD.username = tgInit.username
+          ? tgInit.username
+          : tgInit.first_name;
+          console.log(userFromBD, 'полсе добавления ника')
+          // udpateUser(userFromBD)
+      }
+    } else {
+      console.log("Подключения нет");
+    }
+    // find()
+  }, []);
+
   return (
     <div className="app-container">
       <div className="btn_wrapper">
