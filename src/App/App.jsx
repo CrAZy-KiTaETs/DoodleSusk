@@ -17,8 +17,8 @@ export function App() {
   const [activeBtn, setActiveBtn] = useState("Home");
   const [isNavHide, setIsNavHide] = useState(false);
 
-  const dispatch = useDispatch()
-  const state = useSelector(state => state)
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const URL = "http://localhost:4000/users";
 
@@ -123,7 +123,6 @@ export function App() {
     return res.data;
   };
 
-
   const aaaNewU = {
     id: "test",
     username: "test",
@@ -137,7 +136,7 @@ export function App() {
     inf: "test",
     inf_sub: "test",
     inf_link: "test",
-}
+  };
 
   const initUser = async () => {
     const tg = window.Telegram?.WebApp;
@@ -155,7 +154,9 @@ export function App() {
         udpateUser(userFromBD);
       }
       setNewuser(userFromBD);
-      console.log('добавленный пользователь в стейт')
+      dispatch(updateStateUser(aaaNewU));
+
+      console.log("добавленный пользователь в стейт");
     } else {
       console.log("Подключения нет");
     }
@@ -163,7 +164,6 @@ export function App() {
 
   useEffect(() => {
     initUser();
-
   }, []);
 
   return (
