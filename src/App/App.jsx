@@ -152,7 +152,7 @@ export function App() {
         udpateUser(userFromBD);
       }
       setNewuser(userFromBD);
-      dispatch(updateStateUser(aaaNewU));
+      dispatch(updateStateUser(userFromBD));
 
       console.log("добавленный пользователь в стейт");
     } else {
