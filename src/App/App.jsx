@@ -116,7 +116,7 @@ export function App() {
   };
 
   const udpateUser = (user) => {
-     axios.put(`${URL}/findById/${user.id}`, user, {
+     axios.put(`${URL}/update/${user.id}`, user, {
       headers: { "Content-Type": "application/json" },
     });
   };
