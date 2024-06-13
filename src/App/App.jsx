@@ -8,11 +8,17 @@ import Friends from "../pages/friends/Friends";
 import Game from "../pages/game/Game";
 import Magazine from "../pages/magazine/Magazine";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { updateStateUser } from "../store/slicer";
 
 export function App() {
   const [user, setUser] = useState(false);
+  const [newser, setNewuser] = useState("");
   const [activeBtn, setActiveBtn] = useState("Home");
   const [isNavHide, setIsNavHide] = useState(false);
+
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
 
   const URL = "http://localhost:4000/users";
 
@@ -50,10 +56,6 @@ export function App() {
     setActiveBackround(opt);
     console.log(aciveBackground);
   };
-
-  // useEffect((e) => {
-  //   console.log(isNavHide, 'aaaaaaaaaaaa')
-  // }, [isNavHide]);
 
   const add = async (tg) => {
     try {
@@ -121,25 +123,47 @@ export function App() {
     return res.data;
   };
 
-  useEffect(async () => {
+
+  const aaaNewU = {
+    id: "test",
+    username: "test",
+    ref: "test",
+    wallet: "test",
+    balance: "test",
+    invited: "test",
+    is_sub: "test",
+    ref_count: "test",
+    twitter: "test",
+    inf: "test",
+    inf_sub: "test",
+    inf_link: "test",
+}
+
+  const initUser = async () => {
     const tg = window.Telegram?.WebApp;
     let tgInit = tg.initDataUnsafe.user;
     let params = tg.initDataUnsafe.start_param;
-    params ? console.log(params, 'paraaaaaams') : console.log('ПАРАМЕТРОВ НЕТ')
+    params ? console.log(params, "paraaaaaams") : console.log("ПАРАМЕТРОВ НЕТ");
     if (tgInit) {
       console.log(tgInit, "Данные пользователя с TG");
       let userFromBD = await findUser(tgInit.id);
-      if (userFromBD) {
+      if (!userFromBD.username) {
         userFromBD.username = tgInit.username
-          ? "first"
-          : "second";
-          console.log(userFromBD, 'полсе добавления ника')
-          // udpateUser(userFromBD)
+          ? tgInit.username
+          : tgInit.first_name;
+        console.log(userFromBD, "полсе добавления ника");
+        udpateUser(userFromBD);
       }
+      setNewuser(userFromBD);
+      console.log('добавленный пользователь в стейт')
     } else {
       console.log("Подключения нет");
     }
-    // find()
+  };
+
+  useEffect(() => {
+    initUser();
+
   }, []);
 
   return (

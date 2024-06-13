@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const user = {
-    id: "",
+const initialState = {
+    id: 0,
     username: "",
     ref: "",
     wallet: "",
-    balance: "",
+    balance: 0,
     invited: "",
     is_sub: "",
-    ref_count: "",
+    ref_count: 0,
     twitter: "",
     inf: "",
     inf_sub: "",
@@ -16,24 +16,27 @@ const user = {
 }
 
 
+
+
+
 export const slicer = createSlice({
     name: "counter",
-    initialState: {
-        counter: 0
-    },
+    initialState,
     reducers: {
+        updateStateUser: (state, action) => {
+            return { ...state, ...action.payload }
+        },
         increment: (state) => {
-            state.counter = state.counter + 1
-
+            state.balance = state.balance + 1
         },
         decrement: (state) => {
-            state.counter -= 1
+            state.balance -= 1
         },
         incrementByAmount: (state, action) => {
-            state.counter += action.payload
+            state.balance += action.payload
         }
     }
 })
 
-export const {increment, decrement, incrementByAmount} = slicer.actions
+export const {updateStateUser, increment, decrement, incrementByAmount} = slicer.actions
 export default slicer.reducer

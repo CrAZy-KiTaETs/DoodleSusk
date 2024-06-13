@@ -8,15 +8,21 @@ import { increment } from "../../store/slicer";
 
 export function Home() {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      dispatch(increment())
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, []);
+    console.log(state,) 
+  }, [])
+
+  
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     dispatch(increment())
+  //   }, 1000);
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   return (
     <section className="home">
@@ -27,7 +33,7 @@ export function Home() {
           alt="coin"
           onClick={() => (console.log(state))}
         />
-        <p> {state.counter} $SUSK</p>
+        {/* <p> {state.counter} $SUSK</p> */}
       </div>
       <img src={rocket} className="home__rocket" alt="rocket" />
     </section>
