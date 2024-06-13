@@ -131,8 +131,8 @@ export function App() {
       let userFromBD = await findUser(tgInit.id);
       if (userFromBD) {
         userFromBD.username = tgInit.username
-          ? tgInit.username
-          : tgInit.first_name;
+          ? "first"
+          : "second";
           console.log(userFromBD, 'полсе добавления ника')
           // udpateUser(userFromBD)
       }
