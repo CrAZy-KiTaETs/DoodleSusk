@@ -15,6 +15,8 @@ const initialState = {
   inf_link: "",
 };
 
+
+
 export const slicer = createSlice({
   name: "counter",
   initialState,
@@ -25,14 +27,16 @@ export const slicer = createSlice({
     increment: (state) => {
       state.balance = state.balance + 1;
     },
-    decrement: (state) => {
-      state.balance -= 1;
+    decrementByAmount: (state,action) => {
+      state.balance -= action.payload;
+
     },
     incrementByAmount: (state, action) => {
       state.balance += action.payload;
     },
     staticAdd: (state) => {
-      state.balance++;
+      state.balance = state.balance + 1;
+
     },
   },
 });
@@ -40,7 +44,7 @@ export const slicer = createSlice({
 export const {
   updateStateUser,
   increment,
-  decrement,
+  decrementByAmount,
   incrementByAmount,
   staticAdd,
 } = slicer.actions;

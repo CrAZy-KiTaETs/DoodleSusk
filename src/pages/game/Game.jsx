@@ -11,6 +11,8 @@ import white_platform from "./scripts/images/white_platform.png";
 
 import { Game as GameLogic } from "./scripts/main.js";
 import { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { incrementByAmount } from "../../store/slicer.js";
 
 const Game = ({ hideNav }) => {
   const canvasRef = useRef(null);
@@ -28,18 +30,26 @@ const Game = ({ hideNav }) => {
     setPlaying(set);
   };
 
+  // const selector = useSelector(state => state.balance)
+  const dispatch = useDispatch()
+
+  const getScore = (score) => {
+    dispatch(incrementByAmount(score))
+    console.log(score, 'aaaa');
+  };
+
   let canvas;
   let ctx;
 
   let newGame;
   const start = (set) => {
     hideBtn(set);
-    
+
     canvas = canvasRef.current;
     ctx = canvas.getContext("2d");
     canvas.width = windowWidth.current;
     canvas.height = windowHeight.current;
-    
+
     newGame = new GameLogic(canvas.width, canvas.height);
 
     newGame.gameStart = true;
@@ -55,7 +65,7 @@ const Game = ({ hideNav }) => {
         accumulatedTime -= interval;
       }
 
-      newGame.draw(ctx, hideBtn);
+      newGame.draw(ctx, hideBtn, getScore);
 
       if (!newGame.gameOver) {
         requestAnimationFrame(animate);

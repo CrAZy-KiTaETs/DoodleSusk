@@ -46,7 +46,7 @@ export class Game {
     this.enemies = this.enemies.filter((enemy) => !enemy.markedForDeletion);
   }
 
-  draw(context, hideBtn) {
+  draw(context, hideBtn, getScore) {
     this.background.draw(context);
 
     if (!this.gameStart) {
@@ -65,6 +65,7 @@ export class Game {
 
       if (this.gameOver) {
         hideBtn(false)
+        getScore(this.score)
         // if (this.score > this.bestScore) {
         //   this.bestScore = this.score;
         // }

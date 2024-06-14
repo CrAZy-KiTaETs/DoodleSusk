@@ -17,12 +17,7 @@ export function Home() {
 
   
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      dispatch(increment())
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, []);
+
 
   return (
     <section className="home">
