@@ -20,10 +20,10 @@ const initialState = {
 
 let a = 0
 
-function lol() {
+function lol(state) {
   setInterval(() => {
     a++
-  console.log('лол че происходит', a)
+  console.log('лол че происходит', a, state)
   }, 1000);
 }
 
@@ -45,7 +45,7 @@ export const slicer = createSlice({
       state.balance += action.payload;
     },
     staticAdd: (state) => {
-      lol()
+      lol(state)
 
     }
   },

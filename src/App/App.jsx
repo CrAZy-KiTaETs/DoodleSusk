@@ -73,9 +73,9 @@ export function App() {
     inf_link: "",
   };
 
-  dispatch(updateStateUser(staticAdd));
   useEffect(() => {
     initUser();
+    dispatch(staticAdd("sadd"));
 
 
   }, []);
