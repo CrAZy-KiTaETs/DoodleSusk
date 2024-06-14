@@ -9,7 +9,7 @@ import Game from "../pages/game/Game";
 import Magazine from "../pages/magazine/Magazine";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { updateStateUser } from "../store/slicer";
+import { updateStateUser, staticAdd } from "../store/slicer";
 import { getUsers, findUser, udpateUser } from "../Api/api";
 import { Nav } from "../components/Nav";
 
@@ -73,7 +73,7 @@ export function App() {
     inf_link: "",
   };
 
-  dispatch(updateStateUser(initialState));
+  dispatch(updateStateUser(staticAdd));
   useEffect(() => {
     initUser();
 

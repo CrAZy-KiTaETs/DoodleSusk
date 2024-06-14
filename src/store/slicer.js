@@ -33,7 +33,6 @@ export const slicer = createSlice({
   initialState,
   reducers: {
     updateStateUser: (state, action) => {
-      lol()
       return { ...state, ...action.payload };
     },
     increment: (state) => {
@@ -45,9 +44,13 @@ export const slicer = createSlice({
     incrementByAmount: (state, action) => {
       state.balance += action.payload;
     },
+    staticAdd: (state) => {
+      lol()
+
+    }
   },
 });
 
-export const { updateStateUser, increment, decrement, incrementByAmount } =
+export const { updateStateUser, increment, decrement, incrementByAmount, staticAdd } =
   slicer.actions;
 export default slicer.reducer;
