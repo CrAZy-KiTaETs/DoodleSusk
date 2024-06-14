@@ -49,7 +49,7 @@ export function App() {
       setNewuser(userFromBD);
       dispatch(updateStateUser(userFromBD));
       setTimeout(() => {
-        hideNav(false)
+        hideNav(false);
       }, 2000);
 
       console.log("добавленный пользователь в стейт");
@@ -75,9 +75,13 @@ export function App() {
 
   useEffect(() => {
     initUser();
-    dispatch(staticAdd("sadd"));
+  }, []);
 
-
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      dispatch(staticAdd());
+    }, 1000);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (

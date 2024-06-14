@@ -15,19 +15,6 @@ const initialState = {
   inf_link: "",
 };
 
-
-
-
-let a = 0
-
-function lol(state) {
-  setInterval(() => {
-    a++
-  console.log('лол че происходит', a, state)
-  }, 1000);
-}
-
-
 export const slicer = createSlice({
   name: "counter",
   initialState,
@@ -45,12 +32,16 @@ export const slicer = createSlice({
       state.balance += action.payload;
     },
     staticAdd: (state) => {
-      lol(state)
-
-    }
+      state.balance++;
+    },
   },
 });
 
-export const { updateStateUser, increment, decrement, incrementByAmount, staticAdd } =
-  slicer.actions;
+export const {
+  updateStateUser,
+  increment,
+  decrement,
+  incrementByAmount,
+  staticAdd,
+} = slicer.actions;
 export default slicer.reducer;
