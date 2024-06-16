@@ -22,7 +22,7 @@ export const slicer = createSlice({
   initialState,
   reducers: {
     updateStateUser: (state, action) => {
-      state = action.payload
+      return { ...state, ...action.payload };
     },
     decrementByAmount: (state,action) => {
       state.balance -= action.payload;
