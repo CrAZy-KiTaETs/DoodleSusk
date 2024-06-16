@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 export default function BalanceWrapper({top, playing}) {
   const balance = useSelector((state) => state.balance);
-  const arrBalance = balance.toString().split('');
+  const arrBalance = balance.toString().split('').map(Number);
 
   
   return (
