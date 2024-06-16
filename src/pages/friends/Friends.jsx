@@ -1,6 +1,9 @@
 import "./style.scss";
 import avatar from "../../assets/images/susk.png";
 import coin from "../../assets/images/coin.png";
+import { useSelector } from "react-redux";
+import { udpateBalance } from "../../Api/api";
+import { updateStateUser } from "../../store/slicer";
 
 const Friends = () => {
   const arr = [
@@ -19,6 +22,16 @@ const Friends = () => {
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
+  }
+
+  const userId = useSelector(state=> state.id)
+
+  const claim = async() => {
+    const updatedUser = {
+      id: userId,
+      balance: 0
+    }
+    udpateBalance(updateStateUser)
   }
 
   return (
@@ -46,7 +59,7 @@ const Friends = () => {
           ))}
         </ul>
       </div>
-      <button className="claim">
+      <button className="claim" onClick={claim}>
         <img src={coin} alt="" />
         claim coins:
         <div className="coins-wrapper">
