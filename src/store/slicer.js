@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: 714289599,
+  id: 0,
   username: "",
   ref: "",
   wallet: "",
@@ -22,7 +22,7 @@ export const slicer = createSlice({
   initialState,
   reducers: {
     updateStateUser: (state, action) => {
-      return { ...state, ...action.payload };
+      state = action.payload
     },
     decrementByAmount: (state,action) => {
       state.balance -= action.payload;

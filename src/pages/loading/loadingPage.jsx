@@ -29,6 +29,7 @@ export function LoadingPage({ userIsReady, hideNav }) {
         udpateUser(userFromBD);
       }
       setNewuser(userFromBD);
+      console.log(userFromBD, 'найденый пользователь в бд')
       dispatch(updateStateUser(userFromBD));
       if (userFromBD) {
         setTimeout(() => {

@@ -51,6 +51,7 @@ export function Home({ hideNav }) {
       balance: userMoney,
     };
     dispatch(incrementByAmount(score));
+    console.log(userBalance, score, 'sdfdsfsfdsf')
     udpateBalance(updatedUser);
   };
 
