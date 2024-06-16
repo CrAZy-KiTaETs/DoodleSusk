@@ -16,13 +16,14 @@ const Earn = () => {
 
   const getReward = async (reward) => {
     if (!waiting) {
-      let money = userBalance + reward;
+      let money = Number(userBalance)  + reward;
       setWaiting(true);
       dispatch(incrementByAmount(reward));
       let updatedUser = {
         id: userId,
         balance: money,
       };
+
       (await udpateBalance(updatedUser)) && setWaiting(false);
     }
   };
