@@ -22,11 +22,27 @@ export const findUser = async (id) => {
 
 export const udpateUser = async (user) => {
   try {
+    console.log(user, 'инфа в апи')
     let res = await axios.put(`${URL}/update/${user.id}`, user, {
       headers: { "Content-Type": "application/json" },
     });
-    if (res.status == 200) {
+    if (res.status === 200) {
       console.log("пользователь успешно обновлен");
+    }
+  } catch (error) {
+    console.log("Ошибка при обновлении пользователя", error);
+  }
+};
+
+export const udpateBalance = async (user) => {
+  console.log(user.id, user.balance, 'AAAAAAAA')
+  try {
+    let res = await axios.put(`${URL}/updateBalance/`, user, {
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.status === 200) {
+      console.log("пользователь успешно обновлен");
+      return true
     }
   } catch (error) {
     console.log("Ошибка при обновлении пользователя", error);

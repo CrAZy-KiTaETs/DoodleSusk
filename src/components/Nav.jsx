@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
-import { LoadingPage } from "../pages/loading/loadingPage";
 import "./style.scss";
-import { Home } from "../pages/home/home";
 import cn from "classnames";
-import Earn from "../pages/earn/Earn";
-import Friends from "../pages/friends/Friends";
-import Game from "../pages/game/Game";
-import Magazine from "../pages/magazine/Magazine";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { updateStateUser } from "../store/slicer";
-import { getUsers, findUser, udpateUser } from "../Api/api";
+import friendsIcon from "../assets/images/friends.png";
+import shopIcon from "../assets/images/shop.png";
+import rewardIcon from "../assets/images/reward.png";
+import homeIcon from "../assets/images/home.png";
 
-export function Nav({isNavHide, changeActiveBtn}) {
+export function Nav({ isNavHide, changeActiveBtn }) {
   const [activeBtn, setActiveBtn] = useState("Home");
 
-    const [aciveBackground, setActiveBackround] = useState({
-        width: "calc(100% / 4 - 3rem)",
-        height: "calc(100%)",
-        left: "50%",
-        transform: "translateX(-50%)",
-        id: 1,
-      });
+  const [aciveBackground, setActiveBackround] = useState({
+    width: "calc(100% / 4 - 3rem)",
+    height: "calc(100%)",
+    left: "50%",
+    transform: "translateX(-50%)",
+    id: 1,
+  });
 
-  const navBtns = ["Shop", "Daily", "Home", "Friends", "Game"];
+  const navBtns = [
+    { name: "Shop", img: shopIcon },
+    { name: "Daily", img: rewardIcon },
+    { name: "Friends", img: friendsIcon },
+    { name: "Home", img: homeIcon },
+  ];
 
   const changeActivebtn = (e, btn, id) => {
-    changeActiveBtn(btn)
-    setActiveBtn(btn)
+    changeActiveBtn(btn);
+    setActiveBtn(btn);
     let opt = {
       width: e.target.clientWidth,
       height: e.target.clientHeight,
@@ -39,32 +38,36 @@ export function Nav({isNavHide, changeActiveBtn}) {
     console.log(aciveBackground);
   };
   useEffect(() => {
-    console.log(isNavHide,'wtf') 
-  }, [])
+    console.log(isNavHide, "wtf");
+  }, []);
 
   return (
     <nav className={cn("nav", { hide: isNavHide })}>
-    <ul className="nav__list">
-      {navBtns.map((btn, key) => (
-        <li key={key}>
-          <button
-            className={cn("nav__btn", { active: activeBtn === btn })}
-            onClick={(e) => changeActivebtn(e, btn, key)}
-          >
-            {btn}
-          </button>
-        </li>
-      ))}
-      <li
-        className="activeBtnBackround"
-        style={{
-          width: aciveBackground.width,
-          height: aciveBackground.height,
-          left: aciveBackground.left,
-          transform: aciveBackground.transform,
-        }}
-      ></li>
-    </ul>
-  </nav>
+      <ul className="nav__list">
+        {navBtns.map((btn, key) => (
+          <li key={key}>
+            <div className={cn("wrapper", { active: activeBtn === btn.name })}>
+              <button
+                className={cn("nav__btn")}
+                onClick={(e) => changeActivebtn(e, btn.name, key)}
+              >
+                <img src={btn.img} alt="" />
+              </button>
+              <p className="text">{btn.name}</p>
+            </div>
+          </li>
+        ))}
+        {/* <li
+          className="activeBtnBackround"
+          style={{
+            width: aciveBackground.width,
+            height: aciveBackground.height,
+            left: aciveBackground.left,
+            transform: aciveBackground.transform,
+          }}
+        ></li> */}
+      </ul>
+      <div className="background"></div>
+    </nav>
   );
 }

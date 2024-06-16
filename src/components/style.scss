@@ -1,62 +1,105 @@
+@import "../assets/styles/global.scss";
+
 .nav {
+  position: absolute;
+  z-index: 10;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  // background-color: gray;
+  animation: showNav .3s ease-in-out;
+  animation-fill-mode: forwards;
+  padding-bottom: 0.5rem;
+  // height: 50px;
+  &.hide {
+    animation: hideNav .3s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: -2;
+    height: 100px;
+  }
+  li {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    gap: 0.1rem;
+  }
+  .wrapper {
     position: absolute;
-    bottom: -50%;
+    transition: 0.3s;
+    bottom: 0;
+    text-align: center;
+  }
+
+  .active {
+    bottom: 20px;
+    .nav__btn {
+      transition:  .2s;
+      background-color: $yellow;
+    }
+  }
+
+  &__btn {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border: 3px solid black;
+    position: relative;
+    z-index: 1;
+    background-color: red;
+    padding: 0.3rem;
+  }
+  img {
+    width: 100%;
+  }
+  .text {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .background {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
     left: 0;
     width: 100%;
-    background-color: gray;
-    height: 85px;
-    animation: showNav 2s ease-in-out;
-    animation-fill-mode: forwards;
-    &.hide {
-      animation: hideNav 1s ease-in-out;
-      animation-fill-mode: forwards;
+    height: 100px;
+    // background-color: $blue;
+    background: rgb(248,232,201);
+background: linear-gradient(180deg, rgba(248,232,201,0) 40%, rgba(53,239,221,1) 90%);
+  }
+  // .activeBtnBackround {
+  //   position: absolute;
+  //   left: 50%;
+  //   bottom: 0;
+  //   width: calc(100% / 4 - 1.25rem);
+  //   height: calc(100% - 2rem);
+  //   background-color: wheat;
+  //   z-index: 0;
+  //   transition: 0.5s;
+  //   transform: translateX(-50%);
+  // }
+  @keyframes showNav {
+    from {
+      bottom: -50%;
     }
-
-    &__list {
-      display: flex;
-      gap: 1rem;
-      height: 85px;
-
-      z-index: -2;
-      li {
-        width: 100%;
-        position: relative;
-      }
-    }
-    &__btn {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      background-color: transparent;
-      position: relative;
-      z-index: 1;
-      transition: 1s;
-    }
-    .activeBtnBackround {
-      position: absolute;
-      left: 50%;
+    to {
       bottom: 0;
-      width: calc(100% / 4 - 1.25rem);
-      height: calc(100% - 2rem);
-      background-color: wheat;
-      z-index: 0;
-      transition: 0.5s;
-      transform: translateX(-50%);
     }
-    @keyframes showNav {
-        from {
-          bottom: -50%;
-        }
-        to {
-          bottom: 0;
-        }
-      }
-      @keyframes hideNav {
-        from {
-          bottom: 0%;
-        }
-        to {
-          bottom: -50%;
-        }
-      }
+  }
+  @keyframes hideNav {
+    from {
+      bottom: 0%;
+    }
+    to {
+      bottom: -50%;
+    }
+  }
 }

@@ -13,13 +13,15 @@ import { updateStateUser, staticAdd } from "../store/slicer";
 import { getUsers, findUser, udpateUser } from "../Api/api";
 import { Nav } from "../components/Nav";
 
+
+
 export function App() {
   const [user, setUser] = useState(false);
-  const [newser, setNewuser] = useState("");
   const [activeBtn, setActiveBtn] = useState("Home");
   const [isNavHide, setIsNavHide] = useState(false);
 
   const dispatch = useDispatch();
+  const selector = useSelector((state) => state);
 
   const changeActiveBtn = (state) => {
     setActiveBtn(state);
@@ -33,44 +35,23 @@ export function App() {
     setUser(true);
   };
 
-  const initUser = async () => {
-    const tg = window.Telegram?.WebApp;
-    let tgInit = tg.initDataUnsafe.user;
-    if (tgInit) {
-      console.log(tgInit, "Данные пользователя с TG");
-      let userFromBD = await findUser(tgInit.id);
-      if (!userFromBD.username) {
-        userFromBD.username = tgInit.username
-          ? tgInit.username
-          : tgInit.first_name;
-        console.log(userFromBD, "полсе добавления ника");
-        udpateUser(userFromBD);
-      }
-      setNewuser(userFromBD);
-      dispatch(updateStateUser(userFromBD));
-      setTimeout(() => {
-        hideNav(false);
-      }, 2000);
-
-      console.log("добавленный пользователь в стейт");
-    } else {
-      console.log("Подключения нет");
-    }
-  };
 
 
   useEffect(() => {
-    initUser();
     const intervalId = setInterval(() => {
       dispatch(staticAdd());
-
     }, 1000);
     return () => clearInterval(intervalId);
   }, []);
 
-
-
-
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      udpateUser(selector) && console.log(
+          "Данные статично отправились в бд с переодичностью в минуту", selector
+        );
+    }, 60000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className="app-container">
@@ -82,11 +63,11 @@ export function App() {
       </div>
       {!user ? (
         <>
-          <LoadingPage userIsReady={userIsReady} />
+          <LoadingPage userIsReady={userIsReady} hideNav={hideNav} />
         </>
       ) : (
         <>
-          {activeBtn === "Home" && <Home />}
+          {activeBtn === "Home" && <Home hideNav={hideNav} />}
           {activeBtn === "Daily" && <Earn />}
           {activeBtn === "Friends" && <Friends />}
           {activeBtn === "Game" && <Game hideNav={hideNav} />}

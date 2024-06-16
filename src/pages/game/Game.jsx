@@ -8,40 +8,47 @@ import green_platform from "./scripts/images/green_platform.png";
 import blue_platform from "./scripts/images/blue_platform.png";
 import brown_platform from "./scripts/images/brown_platform.png";
 import white_platform from "./scripts/images/white_platform.png";
-
+// Game
 import { Game as GameLogic } from "./scripts/main.js";
 import { useRef, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { incrementByAmount } from "../../store/slicer.js";
+import { udpateBalance } from "../../Api/api.js";
+
+
 
 const Game = ({ hideNav }) => {
   const canvasRef = useRef(null);
   const windowWidth = useRef(window.innerWidth);
   const windowHeight = useRef(window.innerHeight);
 
-  const [playing, setPlaying] = useState(false);
-
   const FPS = 60;
   const interval = 1000 / FPS;
   let lastTime = 0;
   let accumulatedTime = 0;
+  let canvas;
+  let ctx;
+  let newGame;
+
+  const [playing, setPlaying] = useState(false);
+  const userId = useSelector((state) => state.id);
+  const userBalance = useSelector((state) => state.balance);
+  const dispatch = useDispatch();
+
+  const getScore = (score) => {
+    const userMoney = userBalance + score;
+    const updatedUser = {
+      id: userId,
+      balance: userMoney,
+    };
+    dispatch(incrementByAmount(score));
+    udpateBalance(updatedUser);
+  };
 
   const hideBtn = (set) => {
     setPlaying(set);
   };
 
-  // const selector = useSelector(state => state.balance)
-  const dispatch = useDispatch()
-
-  const getScore = (score) => {
-    dispatch(incrementByAmount(score))
-    console.log(score, 'aaaa');
-  };
-
-  let canvas;
-  let ctx;
-
-  let newGame;
   const start = (set) => {
     hideBtn(set);
 
@@ -50,7 +57,7 @@ const Game = ({ hideNav }) => {
     canvas.width = windowWidth.current;
     canvas.height = windowHeight.current;
 
-    newGame = new GameLogic(canvas.width, canvas.height);
+    newGame = new GameLogic(canvas.width, canvas.height, userBalance);
 
     newGame.gameStart = true;
     function animate(timestamp) {
@@ -80,8 +87,7 @@ const Game = ({ hideNav }) => {
     } else {
       hideNav(false);
     }
-    console.log(playing, "asdsad");
-  }, [playing]);
+  }, [hideNav, playing]);
 
   return (
     <section className="game">
