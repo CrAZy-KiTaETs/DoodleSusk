@@ -6,6 +6,7 @@ function handleOrientation(event) {
 }
  
 export function init() {
+  console.log('ебаная игра')
   if (
     typeof DeviceOrientationEvent !== "undefined" &&
     typeof DeviceOrientationEvent.requestPermission === "function"
