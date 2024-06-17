@@ -57,9 +57,12 @@ export class Player {
         platformType === "white" ||
         platformType === "blue" ||
         platformType === "green"
-      )
+      ) {
+        console.log('прыжок')
         this.vy = this.min_vy;
-
+        
+      }
+      
       // if (platformType == "white") {
       //   new Audio("sound effects/single_jump.mp3").play()}
       // else if (platformType == "blue" || platformType == "green") {

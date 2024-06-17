@@ -13,6 +13,9 @@ const initialState = {
   inf: "",
   inf_sub: "",
   inf_link: "",
+  broken_platforms: 0,
+  new_session: "",
+  last_session: ''
 };
 
 

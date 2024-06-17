@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Game as GameLogic } from "../../Game/main.js";
 import { udpateBalance } from "../../Api/api";
 import { incrementByAmount } from "../../store/slicer";
-import {init} from "../../Game/initGyro.js"
+import { init } from "../../Game/initGyro.js";
 
 // bg top
 import bg1 from "../../assets/images/top-bg-1.png";
@@ -60,7 +60,7 @@ export function Home({ hideNav }) {
   };
 
   const start = (set) => {
-    // init()
+    init()
     DeviceOrientationEvent.requestPermission()
 
     if (!playing) {
@@ -116,13 +116,13 @@ export function Home({ hideNav }) {
         <img src={bg3} className={cn("bg3", { gameStart: playing })} alt="" />
       </div>
       <BalanceWrapper playing={playing} />
-      <p
+      <button
         className={cn("tapToPlay", {
           gameStart: playing,
         })}
       >
         Tap to PLAY
-      </p>
+      </button>
       <div className={cn("img-wrapper")}>
         <img
           src={susk}

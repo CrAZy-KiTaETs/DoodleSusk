@@ -6,12 +6,14 @@ import { incrementByAmount } from "../../store/slicer";
 import { udpateBalance, udpateWallet } from "../../Api/api";
 import DotsPreloader from "../../ux/DotsPreloader";
 import BalanceWrapper from "../../ux/BalanceWrapper/BalanceWrapper";
+import dayjs from "dayjs";
 
 const Earn = () => {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.id);
   const userBalance = useSelector((state) => state.balance);
   const userWallet = useSelector((state) => state.wallet);
+  const userSession = useSelector((state) => state.last_session);
 
   const [walletInput, setWalletInput] = useState(userWallet);
   const [showPopup, setShowPopup] = useState(false);
@@ -62,11 +64,26 @@ const Earn = () => {
     return !/^\s*$/.test(message);
   };
 
+  const currentDay = dayjs();
+
   useEffect(() => {
     if (isValidMessage(userWallet)) {
       setRewardBalance((prev) => (prev += 1000));
-      console.log("asdad");
     }
+    if (userSession) {
+      let differenceInSeconds = currentDay.diff(userSession, "second");
+      // Переводим разницу во времени в часы
+      const differenceInHours = differenceInSeconds / 3600;
+      // Количество очков (1000 очков в час)
+      const points = Math.floor(differenceInHours * 1000);
+      if (points >= 3000) {
+        setRewardBalance((prev) => (prev += 3000));
+      } else {
+        setRewardBalance((prev) => (prev += differenceInSeconds));
+      }
+      console.log(points);
+    }
+    // let lastSession = currentDay.format('YYYY-MM-DD HH:mm:ss')
   }, []);
 
   const missions = [
@@ -78,6 +95,10 @@ const Earn = () => {
     { name: "Набрать 5000 очков", img: icon, reward: 2000 },
     { name: "Набрать 10000 очков", img: icon, reward: 5000 },
   ];
+
+  const claim = () => {
+    
+  }
 
   return (
     <section className="earn">
@@ -121,7 +142,7 @@ const Earn = () => {
           ))}
         </ul>
       </div>
-      <button className="claimAll">
+      <button className="claimAll" onClick={claim}>
         CLAIM ALL:{" "}
         {rewardBalance
           .toString()

@@ -7,10 +7,11 @@
 
   .tapToPlay {
     position: absolute;
-    top: 45%;
-    transform: translateY(-50%);
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 2rem;
-    width: 100%;
+    width: 60%;
     text-align: center;
     animation: aniBreath 2s ease-in-out infinite;
     @keyframes aniBreath {
@@ -41,7 +42,7 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    max-width: 500px;
+    max-width: 300px;
     transform: translateX(-50%);
     left: 50%;
     img {

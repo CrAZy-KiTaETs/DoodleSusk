@@ -26,6 +26,7 @@ export class Player {
     this.vx = 0;
     this.max_vx = 8;
     this.bullets = [];
+    this.brokenPlatforms = 0
   }
 
   update(inputHandler) {
@@ -57,8 +58,13 @@ export class Player {
         platformType === "white" ||
         platformType === "blue" ||
         platformType === "green"
-      )
+      ) {
         this.vy = this.min_vy;
+      }
+      if (platformType === "brown") {
+        this.brokenPlatforms += 1
+      }
+      
 
       // if (platformType == "white") {
       //   new Audio("sound effects/single_jump.mp3").play()}

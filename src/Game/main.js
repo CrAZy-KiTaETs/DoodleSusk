@@ -67,6 +67,7 @@ export class Game {
       if (this.gameOver) {
         hideBtn(false)
         getScore(this.visualScore)
+        console.log(this,' over')
         // if (this.score > this.bestScore) {
         //   this.bestScore = this.score;
         // }

@@ -12,11 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateStateUser, staticAdd } from "../store/slicer";
 import { getUsers, findUser, udpateUser } from "../Api/api";
 import { Nav } from "../components/Nav";
+import dayjs from "dayjs";
+import Claim from "../components/claim/Claim";
 
 export function App() {
   const [user, setUser] = useState(false);
   const [activeBtn, setActiveBtn] = useState("Home");
   const [isNavHide, setIsNavHide] = useState(false);
+  const currentDay = dayjs();
 
   const dispatch = useDispatch();
   const selector = useSelector((state) => state);
@@ -33,23 +36,27 @@ export function App() {
     setUser(true);
   };
 
+  const [showClaim, setShowClaim] = useState(false);
+
   const initUser = async () => {
-    // const tg = window.Telegram?.WebApp;
-    // let tgInit = tg.initDataUnsafe.user;
-    let tgInit = {
-      id: 714289599,
-      username: "",
-      ref: "",
-      wallet: "sdfsdf",
-      balance: 0,
-      invited: "",
-      is_sub: "",
-      ref_count: 0,
-      twitter: "",
-      inf: "",
-      inf_sub: "",
-      inf_link: "",
-    };
+    const tg = window.Telegram?.WebApp;
+    let tgInit = tg.initDataUnsafe.user;
+    // let tgInit = {
+    //   id: 714289599,
+    //   username: "",
+    //   ref: "",
+    //   wallet: "sdfsdf",
+    //   balance: 0,
+    //   invited: "",
+    //   is_sub: "",
+    //   ref_count: 0,
+    //   twitter: "",
+    //   inf: "",
+    //   inf_sub: "",
+    //   inf_link: "",
+    //   new_session: "",
+    //   last_session: "",
+    // };
     if (tgInit) {
       console.log(tgInit, "Данные пользователя с TG");
       let userFromBD = await findUser(tgInit.id);
@@ -60,10 +67,20 @@ export function App() {
         console.log(userFromBD, "полсе добавления ника");
         udpateUser(userFromBD);
       }
+      if (userFromBD.new_session.length <= 0) {
+        let newUser = { ...userFromBD };
+        newUser.new_session = currentDay
+          .add(3, "hour")
+          .format("YYYY-MM-DD HH:mm:ss");
+        udpateUser(newUser);
+      }
       console.log(userFromBD, "найденый пользователь в бд");
       dispatch(updateStateUser(userFromBD));
       if (userFromBD) {
         userIsReady();
+      }
+      if (userFromBD.new_session.length > 0) {
+        setShowClaim(true);
       }
       dispatch(staticAdd());
       console.log("добавленный пользователь в стейт");
@@ -93,11 +110,14 @@ export function App() {
   const [time, setTime] = useState(true);
 
   function pls() {
+    let lastSession = currentDay.format("YYYY-MM-DD HH:mm:ss");
+    let newUser = { ...selector };
+    newUser.last_session = lastSession;
     if (time) {
-      udpateUser(selector) &&
+      udpateUser(newUser) &&
         console.log(
           "Данные статично отправились в бд с переодичностью в минуту",
-          selector
+          newUser
         );
       setTime(!time);
     }
@@ -153,6 +173,7 @@ export function App() {
           {activeBtn === "Game" && <Game hideNav={hideNav} />}
           {activeBtn === "Shop" && <Magazine />}
           <Nav isNavHide={isNavHide} changeActiveBtn={changeActiveBtn} />
+          {showClaim && <Claim />}
         </>
       )}
     </div>
