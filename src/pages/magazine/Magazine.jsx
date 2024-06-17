@@ -84,6 +84,10 @@ const Magazine = () => {
           </li>
         ))}
       </ul>
+      <div className="working">
+      in developing
+      </div>
+
     </section>
   );
 };

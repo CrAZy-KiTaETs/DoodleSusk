@@ -61,7 +61,6 @@ export function Home({ hideNav }) {
 
   const start = (set) => {
     init()
-    DeviceOrientationEvent.requestPermission()
 
     if (!playing) {
       hideBtn(set);

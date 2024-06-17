@@ -184,6 +184,7 @@ const Earn = () => {
           <div className="popup__background" onClick={closePopup}></div>
         </div>
       )}
+      <div className="working">in developing</div>
     </section>
   );
 };

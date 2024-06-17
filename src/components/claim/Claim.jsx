@@ -68,7 +68,7 @@ export default function Claim() {
 
   return (
     <div
-      className={cn("claim", "animate__animated", {
+      className={cn("claim-component", "animate__animated", {
         animate__slideInUp: show,
         animate__slideOutDown: !show,
       })}
