@@ -163,7 +163,7 @@ export function App() {
       </div>
       {!user ? (
         <>
-          <LoadingPage userIsReady={userIsReady} hideNav={hideNav} />
+          {/* <LoadingPage userIsReady={userIsReady} hideNav={hideNav} /> */}
         </>
       ) : (
         <>
