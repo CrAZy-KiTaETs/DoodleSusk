@@ -83,7 +83,7 @@ export function App() {
         setShowClaim(true);
       }
       dispatch(staticAdd());
-      setUser(true)
+      setUser(!user)
       console.log("добавленный пользователь в стейт");
     } else {
       console.log("Подключения нет");
