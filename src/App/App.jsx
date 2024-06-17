@@ -83,6 +83,7 @@ export function App() {
         setShowClaim(true);
       }
       dispatch(staticAdd());
+      setUser(true)
       console.log("добавленный пользователь в стейт");
     } else {
       console.log("Подключения нет");
@@ -163,7 +164,7 @@ export function App() {
       </div>
       {!user ? (
         <>
-          {/* <LoadingPage userIsReady={userIsReady} hideNav={hideNav} /> */}
+          <LoadingPage userIsReady={userIsReady} hideNav={hideNav} />
         </>
       ) : (
         <>
