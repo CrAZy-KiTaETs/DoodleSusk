@@ -35,9 +35,23 @@ export const udpateUser = async (user) => {
 };
 
 export const udpateBalance = async (user) => {
-  console.log(user.id, user.balance, 'AAAAAAAA')
   try {
     let res = await axios.put(`${URL}/updateBalance/`, user, {
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.status === 200) {
+      console.log("пользователь успешно обновлен");
+      return true
+    }
+  } catch (error) {
+    console.log("Ошибка при обновлении пользователя", error);
+  }
+};
+
+export const udpateWallet = async (user) => {
+  console.log(user.id, user.balance, 'AAAAAAAA')
+  try {
+    let res = await axios.patch(`${URL}/updateWallet/`, user, {
       headers: { "Content-Type": "application/json" },
     });
     if (res.status === 200) {

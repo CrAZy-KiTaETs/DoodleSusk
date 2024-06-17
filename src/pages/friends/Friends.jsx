@@ -14,7 +14,7 @@ const Friends = () => {
     { name: "loxEbaniy", balance: "321" },
   ];
 
-  const coinsToClaim = "5432";
+  const coinsToClaim = [1,2,3,4,5,6];
   const userRef = "dsadasdsad"
   const copy = async () => {
     try {
@@ -27,11 +27,11 @@ const Friends = () => {
   const userId = useSelector(state=> state.id)
 
   const claim = async() => {
-    const updatedUser = {
-      id: userId,
-      balance: 0
-    }
-    udpateBalance(updateStateUser)
+    // const updatedUser = {
+    //   id: userId,
+    //   balance: 0
+    // }
+    // udpateBalance(updatedUser)
   }
 
   return (
@@ -41,7 +41,7 @@ const Friends = () => {
         <ul>
           {arr.map((x, key) => (
             <li
-              key={x}
+              key={key}
               className="friend"
               style={{ animationDelay: key * 0.1 + "s" }}
             >
@@ -63,8 +63,8 @@ const Friends = () => {
         <img src={coin} alt="" />
         claim coins:
         <div className="coins-wrapper">
-        {coinsToClaim.split("").map((x, key) => (
-          <span className="coin" key={key}>
+        {coinsToClaim.map((x, key) => (
+          <span className="coin" key={x}>
             {x}
           </span>
         ))}

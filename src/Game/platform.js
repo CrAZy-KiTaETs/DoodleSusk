@@ -54,9 +54,7 @@ export class Platform {
       do {
         y = Math.floor(Math.random() * (upperY - lowerY + 1)) + lowerY;
         attempts++;
-        console.log('вот проблема')
         if (attempts >= maxAttempts) {
-          console.warn("Max attempts reached in calc_Y");
           break;
         }
       } while (this.close_To_Other_Platforms(y));

@@ -65,7 +65,6 @@ export class Game {
       context.fillText(`Score: ${this.score + this.visualScore}`, 20, 40);
 
       if (this.gameOver) {
-        console.log(this.score, this.visualScore, 'aasdadad')
         hideBtn(false)
         getScore(this.visualScore)
         // if (this.score > this.bestScore) {

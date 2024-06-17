@@ -103,13 +103,11 @@ const Game = ({ hideNav }) => {
         <img src={brown_platform} id="brown_platform" alt="" />
         <img src={white_platform} id="white_platform" alt="" />
       </div>
-      {!playing && (
+      {/* {!playing && (
         <button className="start" onClick={() => start(true)}>
           START
         </button>
-      )}
-
-      <button onClick={() => console.log(playing)}>AAAAAA</button>
+      )} */}
     </section>
   );
 };

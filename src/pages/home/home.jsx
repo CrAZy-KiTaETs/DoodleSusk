@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Game as GameLogic } from "../../Game/main.js";
 import { udpateBalance } from "../../Api/api";
 import { incrementByAmount } from "../../store/slicer";
+import {init} from "../../Game/initGyro.js"
 
 // bg top
 import bg1 from "../../assets/images/top-bg-1.png";
@@ -51,7 +52,6 @@ export function Home({ hideNav }) {
       balance: userMoney,
     };
     dispatch(incrementByAmount(score));
-    console.log(userBalance, score, 'sdfdsfsfdsf')
     udpateBalance(updatedUser);
   };
 
@@ -60,8 +60,8 @@ export function Home({ hideNav }) {
   };
 
   const start = (set) => {
+    init()
     if (!playing) {
-      console.log('сработала хуйня')
       hideBtn(set);
       setTimeout(() => {
         canvas = canvasRef.current;

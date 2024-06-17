@@ -17,6 +17,7 @@ const initialState = {
 
 
 
+
 export const slicer = createSlice({
   name: "user",
   initialState,
@@ -32,7 +33,8 @@ export const slicer = createSlice({
       state.balance += action.payload;
     },
     staticAdd: (state) => {
-      state.balance = state.balance + 1;
+     state.balance += 1;
+     return state
     },
   },
 });

@@ -9,13 +9,13 @@ import homeIcon from "../assets/images/home.png";
 export function Nav({ isNavHide, changeActiveBtn }) {
   const [activeBtn, setActiveBtn] = useState("Home");
 
-  const [aciveBackground, setActiveBackround] = useState({
-    width: "calc(100% / 4 - 3rem)",
-    height: "calc(100%)",
-    left: "50%",
-    transform: "translateX(-50%)",
-    id: 1,
-  });
+  // const [aciveBackground, setActiveBackround] = useState({
+  //   width: "calc(100% / 4 - 3rem)",
+  //   height: "calc(100%)",
+  //   left: "50%",
+  //   transform: "translateX(-50%)",
+  //   id: 1,
+  // });
 
   const navBtns = [
     { name: "Shop", img: shopIcon },
@@ -27,19 +27,15 @@ export function Nav({ isNavHide, changeActiveBtn }) {
   const changeActivebtn = (e, btn, id) => {
     changeActiveBtn(btn);
     setActiveBtn(btn);
-    let opt = {
-      width: e.target.clientWidth,
-      height: e.target.clientHeight,
-      left: `calc((1rem * ${id}) + ((${id} + 1) * ${e.target.clientWidth}px) - ${e.target.clientWidth}px)`,
-      id: id + 1,
-      transform: "none",
-    };
-    setActiveBackround(opt);
-    console.log(aciveBackground);
+    // let opt = {
+    //   width: e.target.clientWidth,
+    //   height: e.target.clientHeight,
+    //   left: `calc((1rem * ${id}) + ((${id} + 1) * ${e.target.clientWidth}px) - ${e.target.clientWidth}px)`,
+    //   id: id + 1,
+    //   transform: "none",
+    // };
+    // setActiveBackround(opt);
   };
-  useEffect(() => {
-    console.log(isNavHide, "wtf");
-  }, []);
 
   return (
     <nav className={cn("nav", { hide: isNavHide })}>

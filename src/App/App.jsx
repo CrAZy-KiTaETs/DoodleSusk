@@ -13,8 +13,6 @@ import { updateStateUser, staticAdd } from "../store/slicer";
 import { getUsers, findUser, udpateUser } from "../Api/api";
 import { Nav } from "../components/Nav";
 
-
-
 export function App() {
   const [user, setUser] = useState(false);
   const [activeBtn, setActiveBtn] = useState("Home");
@@ -35,26 +33,108 @@ export function App() {
     setUser(true);
   };
 
-
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
+  const initUser = async () => {
+    // const tg = window.Telegram?.WebApp;
+    // let tgInit = tg.initDataUnsafe.user;
+    let tgInit = {
+      id: 714289599,
+      username: "",
+      ref: "",
+      wallet: "sdfsdf",
+      balance: 0,
+      invited: "",
+      is_sub: "",
+      ref_count: 0,
+      twitter: "",
+      inf: "",
+      inf_sub: "",
+      inf_link: "",
+    };
+    if (tgInit) {
+      console.log(tgInit, "Данные пользователя с TG");
+      let userFromBD = await findUser(tgInit.id);
+      if (!userFromBD.username) {
+        userFromBD.username = tgInit.username
+          ? tgInit.username
+          : tgInit.first_name;
+        console.log(userFromBD, "полсе добавления ника");
+        udpateUser(userFromBD);
+      }
+      console.log(userFromBD, "найденый пользователь в бд");
+      dispatch(updateStateUser(userFromBD));
+      if (userFromBD) {
+        userIsReady();
+      }
       dispatch(staticAdd());
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, []);
+      console.log("добавленный пользователь в стейт");
+    } else {
+      console.log("Подключения нет");
+    }
+  };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      udpateUser(selector) && console.log(
-          "Данные статично отправились в бд с переодичностью в минуту", selector
-        );
-    }, 60000);
-    return () => clearInterval(intervalId);
+    initUser();
   }, []);
+
+  // useEffect(() => {
+  //   console.log('seee', selector.balance)
+  // }, [selector])
+
+  useEffect(() => {
+    if (user) {
+      const intervalId = setInterval(() => {
+        dispatch(staticAdd());
+        // console.log('selel', selector)
+      }, 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [user]);
+
+  const [time, setTime] = useState(true);
+
+  function pls() {
+    if (time) {
+      udpateUser(selector) &&
+        console.log(
+          "Данные статично отправились в бд с переодичностью в минуту",
+          selector
+        );
+      setTime(!time);
+    }
+    setTimeout(() => {
+      setTime(!time);
+    }, 60000);
+  }
+
+  // useEffect(() => {
+  //   if (user) {
+  //     const intervalId = setInterval(() => {
+  //       console.log(
+  //         "Данные статично отправились в бд с переодичностью в минуту",
+  //         selector
+  //       );
+  //       // if (udpateUser(selector)) {
+  //       // }
+  //     }, 10000);
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, [user, selector]);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     const intervalId = setInterval(() => {
+  //       udpateUser(selector) &&
+  //         console.log(
+  //           "Данные статично отправились в бд с переодичностью в минуту",
+  //           selector
+  //         );
+  //     }, 10000);
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, []);
 
   return (
-    <div className="app-container">
+    <div className="app-container" onClick={() => pls()}>
       <div className="btn_wrapper">
         {/* <button onClick={() => add()}>ADD</button>
         <button onClick={() => get()}>get</button>

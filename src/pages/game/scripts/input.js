@@ -7,7 +7,6 @@ export class InputHandler {
 
 
     window.addEventListener("keydown", (e) => {
-      console.log(e.key)
       if (
         (e.key == "ArrowLeft" || e.key == "ArrowRight") &&
         !this.keys.includes(e.key)
@@ -23,7 +22,6 @@ export class InputHandler {
       let board = document.getElementById("canvas1");
       // let board = document.querySelector('.black-screen')
       if (e.target == board) {
-        console.log("тач экрана", e.target);
         // this.game.gameStart = true;
         window.removeEventListener("touchstart", touch);
         window.addEventListener("touchstart", (e) => {

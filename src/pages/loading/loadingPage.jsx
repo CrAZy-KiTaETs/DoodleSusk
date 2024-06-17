@@ -12,66 +12,9 @@ import "animate.css";
 
 export function LoadingPage({ userIsReady, hideNav }) {
   const [user, setUser] = useState(false);
-  const [newser, setNewuser] = useState("");
   const dispatch = useDispatch();
 
-  const initUser = async () => {
-    const tg = window.Telegram?.WebApp;
-    let tgInit = tg.initDataUnsafe.user;
-    if (tgInit) {
-      console.log(tgInit, "Данные пользователя с TG");
-      let userFromBD = await findUser(tgInit.id);
-      if (!userFromBD.username) {
-        userFromBD.username = tgInit.username
-          ? tgInit.username
-          : tgInit.first_name;
-        console.log(userFromBD, "полсе добавления ника");
-        udpateUser(userFromBD);
-      }
-      setNewuser(userFromBD);
-      console.log(userFromBD, 'найденый пользователь в бд')
-      dispatch(updateStateUser(userFromBD));
-      if (userFromBD) {
-        setTimeout(() => {
-          hideNav(false);
-        }, 2000);
-        setTimeout(() => {
-          setUser(true);
-          setTimeout(() => {
-            userIsReady();
-          }, 4000);
-        }, 5000);
-      }
 
-      console.log("добавленный пользователь в стейт");
-    } else {
-      console.log("Подключения нет");
-    }
-  };
-
-  useEffect(() => {
-    initUser();
-    // setTimeout(() => {
-    //   hideNav(false);
-    // }, 2000);
-    // setTimeout(() => {
-    //   setUser(true);
-    //   setTimeout(() => {
-    //     userIsReady();
-    //   }, 4000);
-    // }, 5000);
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-        // userIsReady();
-
-      setUser(true)
-    }, 2000);
-    setTimeout(() => {
-      userIsReady();
-  }, 3000);
-  }, [])
 
   return (
     <section className={cn("loading-page")}>
