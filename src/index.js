@@ -7,7 +7,9 @@ const port = 80;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({
+   origin: '*'
+}))
 
 // Routes
 const usersRouter = require('./routes/users');

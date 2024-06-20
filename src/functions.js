@@ -1,4 +1,4 @@
-const URL = "https://elonsusk-70edcf6522d9.herokuapp.com/users";
+const URL = "192.168.0.2/users";
 
 
 // Поиск юзера по ID в таблице
