@@ -90,8 +90,15 @@ export function App() {
     }
   };
 
+  async function go() {
+    let data = await fetch("https://suskback.netlify.app/users/get")
+    let res = await data.json()
+    console.log(res)
+  }
+
   useEffect(() => {
     initUser();
+    go()
   }, []);
 
   // useEffect(() => {
@@ -156,12 +163,6 @@ export function App() {
 
   return (
     <div className="app-container" onClick={() => pls()}>
-      <div className="btn_wrapper">
-        {/* <button onClick={() => add()}>ADD</button>
-        <button onClick={() => get()}>get</button>
-        <button onClick={() => find()}>findId</button>
-        <button onClick={() => findRef()}>findRef</button> */}
-      </div>
       {!user ? (
         <>
           <LoadingPage userIsReady={userIsReady} hideNav={hideNav} />
