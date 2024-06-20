@@ -90,15 +90,10 @@ export function App() {
     }
   };
 
-  async function go() {
-    let data = await fetch("https://suskback.netlify.app/users/get")
-    let res = await data.json()
-    console.log(res)
-  }
+
 
   useEffect(() => {
     initUser();
-    go()
   }, []);
 
   // useEffect(() => {

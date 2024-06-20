@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const URL = "http://localhost:4000/users";
+const URL = "http://31.129.59.215:8080/users";
 
 export const getUsers = async () => {
   try {
-    let res = await axios.get("http://localhost:4000/users/");
+    let res = await axios.get(URL);
     return res.data;
   } catch (error) {
     console.log("Ошибка при получении всех юзеров", error);
