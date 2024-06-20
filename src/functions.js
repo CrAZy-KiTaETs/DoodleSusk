@@ -1,4 +1,4 @@
-const URL = "http://localhost:4000/users";
+const URL = "http://localhost:80/users";
 
 
 // Поиск юзера по ID в таблице
@@ -8,7 +8,7 @@ async function checkUserInBd(id) {
     let user = await res.json();
     return user;
   } catch (error) {
-    console.log("Ошибка при поиске пользователя", user);
+    console.log("Ошибка при поиске пользователя". error);
   }
 }
 
@@ -52,7 +52,7 @@ async function addUserToSheet(body) {
     });
     console.log("полученные данные при добавлнеии юзера");
   } catch (error) {
-    console.log("ошибка при добавлении пользователя");
+    console.log("ошибка при добавлении пользователя", error);
   }
 }
 module.exports = {
