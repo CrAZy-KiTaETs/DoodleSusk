@@ -96,6 +96,8 @@ export function App() {
     initUser();
   }, []);
 
+  
+
   // useEffect(() => {
   //   console.log('seee', selector.balance)
   // }, [selector])

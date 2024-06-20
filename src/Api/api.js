@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://31.129.59.215:8080/users";
+const URL = "https://31.129.59.215:8080/users";
 
 export const getUsers = async () => {
   try {
