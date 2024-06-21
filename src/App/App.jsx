@@ -60,10 +60,14 @@ export function App() {
     if (tgInit) {
       console.log(tgInit, "Данные пользователя с TG");
       let userFromBD = await findUser(tgInit.id);
-      if (!userFromBD.username) {
-        userFromBD.username = tgInit.username
-          ? tgInit.username
-          : tgInit.first_name;
+      console.log(userFromBD, "найденый пользователь в бд");
+
+      if (userFromBD.username.length <= 0) {
+        if (tgInit.username) {
+          userFromBD.username = tgInit.username
+        } else {
+          userFromBD.username = tgInit.first_name
+        }
         console.log(userFromBD, "полсе добавления ника");
         udpateUser(userFromBD);
       }
@@ -74,7 +78,7 @@ export function App() {
           .format("YYYY-MM-DD HH:mm:ss");
         udpateUser(newUser);
       }
-      console.log(userFromBD, "найденый пользователь в бд");
+      console.log(userFromBD, "найденый пользователь в бд КОНЕЦ");
       dispatch(updateStateUser(userFromBD));
       if (userFromBD) {
         userIsReady();
