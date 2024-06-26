@@ -92,7 +92,7 @@ export function Home({ hideNav }) {
         }
         requestAnimationFrame(animate);
         
-      }, 1000);
+      }, 3000);
     }
   };
 
@@ -106,10 +106,10 @@ export function Home({ hideNav }) {
 
   return (
     <section className="home">
-      <div className={cn("bgWrapper", { gameStart: playing })}>
+      {/* <div className={cn("bgWrapper", { gameStart: playing })}>
         <div className={cn("bg2", { gameStart: playing })}></div>
         <img src={bg3} className={cn("bg3", { gameStart: playing })} alt="" />
-      </div>
+      </div> */}
       <BalanceWrapper playing={playing} />
       <button
         className={cn("tapToPlay", {
@@ -119,7 +119,7 @@ export function Home({ hideNav }) {
       >
         Tap to PLAY
       </button>
-      {/* <div className={cn("img-wrapper")}>
+      <div className={cn("img-wrapper")}>
         <img
           src={susk}
           className={cn("img-wrapper__susk", "animate__animated ", {
@@ -139,7 +139,7 @@ export function Home({ hideNav }) {
           })}
           alt="susk"
         />
-      </div> */}
+      </div>
       <div className="canvas-wrapper">
         <canvas id="canvas1" ref={canvasRef}></canvas>
         <img src={back} id="cropBg" alt="" />
