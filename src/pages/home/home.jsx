@@ -60,7 +60,15 @@ export function Home({ hideNav }) {
   };
 
   const start = (set) => {
-
+    DeviceMotionEvent.requestPermission()
+      .then((response) => {
+        if (response == "granted") {
+          window.addEventListener("devicemotion", (e) => {
+            /* разрешение получено */
+          });
+        }
+      })
+      .catch(console.error);
     if (!playing) {
       hideBtn(set);
       setTimeout(() => {
@@ -68,24 +76,24 @@ export function Home({ hideNav }) {
         ctx = canvas.getContext("2d");
         canvas.width = windowWidth.current;
         canvas.height = windowHeight.current;
-  
+
         newGame = new GameLogic(canvas.width, canvas.height, userBalance);
-  
+
         newGame.gameStart = true;
         function animate(timestamp) {
           if (!lastTime) lastTime = timestamp;
           const deltaTime = timestamp - lastTime;
           lastTime = timestamp;
           accumulatedTime += deltaTime;
-  
+
           while (accumulatedTime >= interval) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             if (newGame.gameStart) newGame.update(deltaTime);
             accumulatedTime -= interval;
           }
-  
+
           newGame.draw(ctx, hideBtn, getScore);
-  
+
           if (!newGame.gameOver) {
             requestAnimationFrame(animate);
           }
@@ -93,8 +101,6 @@ export function Home({ hideNav }) {
         requestAnimationFrame(animate);
       }, 3000);
     }
-
-
   };
 
   useEffect(() => {
