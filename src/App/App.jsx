@@ -64,14 +64,17 @@ export function App() {
 
       if (!userFromBD.username) {
         if (tgInit.username) {
-          userFromBD.username = tgInit.username
+          userFromBD.username = tgInit.username;
         } else {
-          userFromBD.username = tgInit.first_name
+          userFromBD.username = tgInit.first_name;
         }
         console.log(userFromBD, "полсе добавления ника");
         udpateUser(userFromBD);
       }
-      if (userFromBD.new_session.length <= 0) {
+      if (
+        userFromBD.new_session == null ||
+        userFromBD.new_session.length <= 0
+      ) {
         let newUser = { ...userFromBD };
         newUser.new_session = currentDay
           .add(3, "hour")
@@ -87,20 +90,16 @@ export function App() {
         setShowClaim(true);
       }
       dispatch(staticAdd());
-      setUser(!user)
+      setUser(!user);
       console.log("добавленный пользователь в стейт");
     } else {
       console.log("Подключения нет");
     }
   };
 
-
-
   useEffect(() => {
     initUser();
   }, []);
-
-  
 
   // useEffect(() => {
   //   console.log('seee', selector.balance)
