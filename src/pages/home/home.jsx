@@ -107,7 +107,7 @@ export function Home({ hideNav }) {
   }, [hideNav, playing]);
 
   return (
-    <section className="home" onClick={() => start(true)}>
+    <section className="home">
       <div className={cn("bgWrapper", { gameStart: playing })}>
         {/* <img src={bg1} className="bg1" alt="" /> */}
         {/* <img src={bg2} className="bg2" alt="" /> */}
@@ -119,6 +119,7 @@ export function Home({ hideNav }) {
         className={cn("tapToPlay", {
           gameStart: playing,
         })}
+        onClick={() => start(true)}
       >
         Tap to PLAY
       </button>
