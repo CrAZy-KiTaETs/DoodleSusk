@@ -47,6 +47,7 @@ export default function Claim() {
       userLastSession,
       currentDay
     );
+    console.log(typeof points, points, 'это поинты в клейме')
     console.log(points, "aaaaaa");
     if (points >= 3000) {
       setClaimMoney(3000);
