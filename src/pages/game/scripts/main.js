@@ -35,10 +35,10 @@ export class Game {
     this.inputHandler = new InputHandler(this);
   }
 
-  update(deltaTime) {
+  update(deltaTime, gamma) {
     this.background.update(deltaTime);
     this.platforms.forEach((platform) => platform.update());
-    this.player.update(this.inputHandler, deltaTime);
+    this.player.update(this.inputHandler, gamma);
     this.enemies.forEach((enemy) => enemy.update());
 
     this.platforms = this.platforms.filter(

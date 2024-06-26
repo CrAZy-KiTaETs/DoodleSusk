@@ -60,15 +60,7 @@ export function Home({ hideNav }) {
   };
 
   const start = (set) => {
-    DeviceMotionEvent.requestPermission()
-      .then((response) => {
-        if (response == "granted") {
-          window.addEventListener("devicemotion", (e) => {
-            /* разрешение получено */
-          });
-        }
-      })
-      .catch(console.error);
+    let gamma = init()
     if (!playing) {
       hideBtn(set);
       setTimeout(() => {
@@ -88,7 +80,7 @@ export function Home({ hideNav }) {
 
           while (accumulatedTime >= interval) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (newGame.gameStart) newGame.update(deltaTime);
+            if (newGame.gameStart) newGame.update(deltaTime, gamma);
             accumulatedTime -= interval;
           }
 

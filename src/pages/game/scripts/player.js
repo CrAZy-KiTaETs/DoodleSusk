@@ -28,7 +28,7 @@ export class Player {
     this.bullets = [];
   }
 
-  update(inputHandler) {
+  update(inputHandler, gamma) {
     // horizontal movement
     // movement on keys
     this.x += this.vx;
@@ -39,7 +39,6 @@ export class Player {
     } else this.vx = 0;
 
     // movement by phone
-    let gamma = init();
     if (window.screen.width < 768) {
       if (gamma >= 5 || gamma <= 5) {
         this.vx = gamma / 4;
