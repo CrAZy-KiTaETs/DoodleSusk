@@ -60,7 +60,6 @@ export function Home({ hideNav }) {
   };
 
   const start = (set) => {
-    init()
 
     if (!playing) {
       hideBtn(set);
