@@ -85,7 +85,7 @@ const Magazine = () => {
         ))}
       </ul>
       <div className="working">
-      in developing
+      in progress...
       </div>
 
     </section>

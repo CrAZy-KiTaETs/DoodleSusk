@@ -37,7 +37,6 @@ const Friends = () => {
   return (
     <section className="friends">
       <div className="friends__list">
-        <p>Приглашенные друзья</p>
         <ul>
           {!arr ? (
             <>
@@ -62,7 +61,7 @@ const Friends = () => {
               ))}
             </>
           ) : (
-            <div>You haven't invited your friends yet</div>
+            <div className="noFriends">You haven't invited your friends yet</div>
           )}
           {/* {arr.map((x, key) => (
             <li
@@ -84,7 +83,7 @@ const Friends = () => {
           ))} */}
         </ul>
       </div>
-      <button className="claim" onClick={claim}>
+      {/* <button className="claim" onClick={claim}>
         <img src={coin} alt="" />
         claim coins:
         <div className="coins-wrapper">
@@ -94,7 +93,7 @@ const Friends = () => {
             </span>
           ))}
         </div>
-      </button>
+      </button> */}
       <div className="ref">
         <p className="ref__text">invite friends and get more $SUSK</p>
         <button className="ref__btn" onClick={copy}>
