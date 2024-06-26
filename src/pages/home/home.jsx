@@ -63,7 +63,7 @@ export function Home({ hideNav }) {
     let gamma = init()
     if (!playing) {
       hideBtn(set);
-      // setTimeout(() => {
+      setTimeout(() => {
         canvas = canvasRef.current;
         ctx = canvas.getContext("2d");
         canvas.width = windowWidth.current;
@@ -92,7 +92,7 @@ export function Home({ hideNav }) {
         }
         requestAnimationFrame(animate);
         
-      // }, 3000);
+      }, 1000);
     }
   };
 
