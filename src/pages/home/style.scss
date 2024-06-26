@@ -152,7 +152,7 @@
       top: 200%;
     }
     to {
-      display: none;
+      display: none !important;
     }
   }
 }
