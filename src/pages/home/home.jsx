@@ -106,10 +106,10 @@ export function Home({ hideNav }) {
 
   return (
     <section className="home">
-      {/* <div className={cn("bgWrapper", { gameStart: playing })}>
+      <div className={cn("bgWrapper", { gameStart: playing })}>
         <div className={cn("bg2", { gameStart: playing })}></div>
         <img src={bg3} className={cn("bg3", { gameStart: playing })} alt="" />
-      </div> */}
+      </div>
       <BalanceWrapper playing={playing} />
       <button
         className={cn("tapToPlay", {
