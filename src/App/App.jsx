@@ -62,7 +62,7 @@ export function App() {
       let userFromBD = await findUser(tgInit.id);
       console.log(userFromBD, "найденый пользователь в бд");
 
-      if (userFromBD.username.length <= 0) {
+      if (!userFromBD.username) {
         if (tgInit.username) {
           userFromBD.username = tgInit.username
         } else {
