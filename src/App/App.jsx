@@ -132,7 +132,7 @@ export function App() {
     }
     setTimeout(() => {
       setTime(!time);
-    }, 60000);
+    }, 10000);
   }
 
   // useEffect(() => {

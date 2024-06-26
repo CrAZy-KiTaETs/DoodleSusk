@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
 import { udpateBalance, udpateUser } from "../../Api/api";
 import cn from "classnames";
+import { incrementByAmount } from "../../store/slicer";
 
 export default function Claim() {
   const [claimMoney, setClaimMoney] = useState(0);
@@ -15,6 +16,9 @@ export default function Claim() {
   const userId = useSelector((state) => state.id);
   const user = useSelector((state) => state);
   const userBalance = useSelector((state) => state.balance);
+
+  const dispatch = useDispatch()
+
   //   const userLastSession = "2024-06-17 10:49:25";
 
   //   const userNewSession = "2024-06-17 13:49:25";
@@ -61,7 +65,9 @@ export default function Claim() {
   const claim = () => {
     let newUser = {...user};
     newUser.new_session = currentDay.add(3, 'hour').format("YYYY-MM-DD HH:mm:ss")
+    newUser.balance += claimMoney 
     udpateUser(newUser)
+    dispatch(incrementByAmount(claimMoney))
     // udpateBalance(newUser);
     setShow(false);
     console.log(show, "saasd");
