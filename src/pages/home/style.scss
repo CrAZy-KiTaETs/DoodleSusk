@@ -100,6 +100,8 @@
           }
           99% {
             bottom: 0px;
+            opacity: 1;
+            visibility: visible;
           }
           to {
             display: none;
@@ -152,6 +154,8 @@
     }
     99% {
       top: 200%;
+      opacity: 1;
+      visibility: visible;
     }
     to {
       display: none !important;
