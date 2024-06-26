@@ -63,7 +63,6 @@ export function Home({ hideNav }) {
     let gamma = init()
     if (!playing) {
       hideBtn(set);
-      setTimeout(() => {
         canvas = canvasRef.current;
         ctx = canvas.getContext("2d");
         canvas.width = windowWidth.current;
@@ -91,7 +90,6 @@ export function Home({ hideNav }) {
           }
         }
         requestAnimationFrame(animate);
-      }, 3000);
     }
   };
 
@@ -105,10 +103,10 @@ export function Home({ hideNav }) {
 
   return (
     <section className="home">
-      <div className={cn("bgWrapper", { gameStart: playing })}>
+      {/* <div className={cn("bgWrapper", { gameStart: playing })}>
         <div className={cn("bg2", { gameStart: playing })}></div>
         <img src={bg3} className={cn("bg3", { gameStart: playing })} alt="" />
-      </div>
+      </div> */}
       <BalanceWrapper playing={playing} />
       <button
         className={cn("tapToPlay", {
@@ -118,7 +116,7 @@ export function Home({ hideNav }) {
       >
         Tap to PLAY
       </button>
-      <div className={cn("img-wrapper")}>
+      {/* <div className={cn("img-wrapper")}>
         <img
           src={susk}
           className={cn("img-wrapper__susk", "animate__animated ", {
@@ -138,7 +136,7 @@ export function Home({ hideNav }) {
           })}
           alt="susk"
         />
-      </div>
+      </div> */}
       <div className="canvas-wrapper">
         <canvas id="canvas1" ref={canvasRef}></canvas>
         <img src={back} id="cropBg" alt="" />
@@ -151,11 +149,11 @@ export function Home({ hideNav }) {
         <img src={brown_platform} id="brown_platform" alt="" />
         <img src={white_platform} id="white_platform" alt="" />
       </div>
-      {!playing && (
+      {/* {!playing && (
         <button className="start" onClick={() => start(true)}>
           START
         </button>
-      )}
+      )} */}
 
       {/* <div className={cn("background", {})}></div>
       <div className="home__coins-wrapper">
