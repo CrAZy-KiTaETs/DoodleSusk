@@ -105,7 +105,7 @@ export function Home({ hideNav }) {
 
   return (
     <section className="home">
-      {/* <div className={cn("bgWrapper", { gameStart: playing })}>
+      <div className={cn("bgWrapper", { gameStart: playing })}>
         <div className={cn("bg2", { gameStart: playing })}></div>
         <img src={bg3} className={cn("bg3", { gameStart: playing })} alt="" />
       </div>
@@ -138,7 +138,7 @@ export function Home({ hideNav }) {
           })}
           alt="susk"
         />
-      </div> */}
+      </div>
       <div className="canvas-wrapper">
         <canvas id="canvas1" ref={canvasRef}></canvas>
         <img src={back} id="cropBg" alt="" />
