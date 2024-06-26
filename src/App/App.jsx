@@ -72,11 +72,15 @@ export function App() {
         udpateUser(userFromBD);
       }
       if (!userFromBD.new_session) {
-        let newUser = { ...userFromBD };
-        newUser.new_session = currentDay
+        userFromBD.new_session = currentDay
           .add(3, "hour")
           .format("YYYY-MM-DD HH:mm:ss");
-        udpateUser(newUser);
+        udpateUser(userFromBD);
+      }
+      if (!userFromBD.last_session) {
+        userFromBD.lastSession = currentDay
+          .format("YYYY-MM-DD HH:mm:ss");
+        udpateUser(userFromBD);
       }
       console.log(userFromBD, "найденый пользователь в бд КОНЕЦ");
       dispatch(updateStateUser(userFromBD));
