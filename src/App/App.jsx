@@ -78,7 +78,7 @@ export function App() {
         udpateUser(userFromBD);
       }
       if (!userFromBD.last_session) {
-        userFromBD.lastSession = currentDay
+        userFromBD.last_session = currentDay
           .format("YYYY-MM-DD HH:mm:ss");
         udpateUser(userFromBD);
       }
