@@ -71,10 +71,7 @@ export function App() {
         console.log(userFromBD, "полсе добавления ника");
         udpateUser(userFromBD);
       }
-      if (
-        userFromBD.new_session == null ||
-        userFromBD.new_session.length <= 0
-      ) {
+      if (!userFromBD.new_session) {
         let newUser = { ...userFromBD };
         newUser.new_session = currentDay
           .add(3, "hour")
