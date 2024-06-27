@@ -39,25 +39,25 @@ export function App() {
   const [showClaim, setShowClaim] = useState(false);
 
   const initUser = async () => {
-    // const tg = window.Telegram?.WebApp;
-    // let tgInit = tg.initDataUnsafe.user;
-    let tgInit = {
-      id: 714289599,
-      username: "",
-      ref: "",
-      wallet: "sdfsdf",
-      balance: 0,
-      invited: "",
-      is_sub: "",
-      ref_count: 0,
-      twitter: "",
-      inf: "",
-      inf_sub: "",
-      inf_link: "",
-      new_session: "",
-      last_session: "",
-      invited_by: 0,
-    };
+    const tg = window.Telegram?.WebApp;
+    let tgInit = tg.initDataUnsafe.user;
+    // let tgInit = {
+    //   id: 714289599,
+    //   username: "",
+    //   ref: "",
+    //   wallet: "sdfsdf",
+    //   balance: 0,
+    //   invited: "",
+    //   is_sub: "",
+    //   ref_count: 0,
+    //   twitter: "",
+    //   inf: "",
+    //   inf_sub: "",
+    //   inf_link: "",
+    //   new_session: "",
+    //   last_session: "",
+    //   invited_by: 0,
+    // };
     if (tgInit) {
       console.log(tgInit, "Данные пользователя с TG");
       let userFromBD = await findUser(tgInit.id);
