@@ -56,6 +56,7 @@ export function App() {
       inf_link: "",
       new_session: "",
       last_session: "",
+      invited_by: 0,
     };
     if (tgInit) {
       console.log(tgInit, "Данные пользователя с TG");

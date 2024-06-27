@@ -62,3 +62,12 @@ export const udpateWallet = async (user) => {
     console.log("Ошибка при обновлении пользователя", error);
   }
 };
+
+export const findFriends = async (id) => {
+  try {
+    let res = await axios.get(`${URL}/friends/${id}`)
+    return res.data
+  } catch (error) {
+    console.log("ошибка при поиске друзей", error)
+  }
+}

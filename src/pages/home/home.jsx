@@ -103,6 +103,12 @@ export function Home({ hideNav }) {
     }
   }, [hideNav, playing]);
 
+  async function exala() {
+    let a = await fetch(`https://elonsusk.cloud/users/friends/${userId}`)
+    let b = await a.json()
+    console.log(b)
+  }
+
   return (
     <section className="home">
       <div className="canvas-wrapper">
@@ -153,6 +159,7 @@ export function Home({ hideNav }) {
           alt="susk"
         />
       </div>
+      <button onClick={exala}>CLICK</button>
 
       {/* {!playing && (
         <button className="start" onClick={() => start(true)}>

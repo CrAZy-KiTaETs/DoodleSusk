@@ -15,7 +15,8 @@ const initialState = {
   inf_link: "",
   broken_platforms: 0,
   new_session: "",
-  last_session: ''
+  last_session: '',
+  invited_by: 0
 };
 
 

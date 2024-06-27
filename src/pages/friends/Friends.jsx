@@ -2,8 +2,9 @@ import "./style.scss";
 import avatar from "../../assets/images/susk.png";
 import coin from "../../assets/images/coin.png";
 import { useSelector } from "react-redux";
-import { udpateBalance } from "../../Api/api";
+import { findFriends, udpateBalance } from "../../Api/api";
 import { updateStateUser } from "../../store/slicer";
+import { useEffect, useState } from "react";
 
 const Friends = () => {
   const arr = [
@@ -34,21 +35,33 @@ const Friends = () => {
     // udpateBalance(updatedUser)
   };
 
+  const [friends, setFriends] = useState([])
+
+  const getFriends = async () => {
+    const data = await findFriends(userId)
+    setFriends(data)
+    console.log(data, 'друзья')
+  }
+
+  useEffect(() => {
+    getFriends()
+  }, [])
+
   return (
     <section className="friends">
       <div className="friends__list">
         <ul>
-          {!arr ? (
+          {friends.length ? (
             <>
               {" "}
-              {arr.map((x, key) => (
+              {friends.map((x, key) => (
                 <li
                   key={key}
                   className="friend"
                   style={{ animationDelay: key * 0.1 + "s" }}
                 >
                   <img src={avatar} alt="" />
-                  <p className="friend__name">{x.name}</p>
+                  <p className="friend__name">{x.id}</p>
                   <div className="wrapper">
                     <p className="friend__balance">
                       {x.balance.split("").map((x) => (
