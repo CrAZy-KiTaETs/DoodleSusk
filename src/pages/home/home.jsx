@@ -60,7 +60,7 @@ export function Home({ hideNav }) {
   };
 
   const start = (set) => {
-    let gamma = init()
+    let gamma = init();
     if (!playing) {
       hideBtn(set);
       setTimeout(() => {
@@ -91,8 +91,7 @@ export function Home({ hideNav }) {
           }
         }
         requestAnimationFrame(animate);
-        
-      }, 3000);
+      }, 500);
     }
   };
 
@@ -106,10 +105,24 @@ export function Home({ hideNav }) {
 
   return (
     <section className="home">
-      <div className={cn("bgWrapper", { gameStart: playing })}>
+      <div className="canvas-wrapper">
+        <canvas id="canvas1" ref={canvasRef}></canvas>
+        <img src={back} id="cropBg" alt="" />
+        <img src={backTop} id="cropBgTop" alt="" />
+        <img src={player} id="player" alt="" />
+        <img src={bullet} id="bullet" alt="" />
+        <img src={enemy} id="enemy" alt="" />
+        <img src={green_platform} id="green_platform" alt="" />
+        <img src={blue_platform} id="blue_platform" alt="" />
+        <img src={brown_platform} id="brown_platform" alt="" />
+        <img src={white_platform} id="white_platform" alt="" />
+      </div>
+
+      {/* <div className={cn("bgWrapper", { gameStart: playing })}>
         <div className={cn("bg2", { gameStart: playing })}></div>
         <img src={bg3} className={cn("bg3", { gameStart: playing })} alt="" />
-      </div>
+      </div> */}
+
       <BalanceWrapper playing={playing} />
       <button
         className={cn("tapToPlay", {
@@ -140,18 +153,7 @@ export function Home({ hideNav }) {
           alt="susk"
         />
       </div>
-      <div className="canvas-wrapper">
-        <canvas id="canvas1" ref={canvasRef}></canvas>
-        <img src={back} id="cropBg" alt="" />
-        <img src={backTop} id="cropBgTop" alt="" />
-        <img src={player} id="player" alt="" />
-        <img src={bullet} id="bullet" alt="" />
-        <img src={enemy} id="enemy" alt="" />
-        <img src={green_platform} id="green_platform" alt="" />
-        <img src={blue_platform} id="blue_platform" alt="" />
-        <img src={brown_platform} id="brown_platform" alt="" />
-        <img src={white_platform} id="white_platform" alt="" />
-      </div>
+
       {/* {!playing && (
         <button className="start" onClick={() => start(true)}>
           START
